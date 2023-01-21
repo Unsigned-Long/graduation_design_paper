@@ -446,7 +446,7 @@
 \setlength { \skip \footins } { \skip_eval:n { 2 \baselineskip } plus 1 fill }
 \tl_set:Nn \footnotesize { \songti \zihao { 5 } }
 \tl_set:Nn \footnoterule
-  { \noindent \rule [ 1 pt ] { 0.3 \columnwidth } { 1 pt } }
+  { \noindent \rule [ 4 pt ] { 0.3 \columnwidth } { 1 pt } }
 
 \NewDocumentCommand { \circled } { m }
   {
