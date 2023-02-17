@@ -10,16 +10,16 @@
         title          = {武汉大学学位论文 \LaTeX{} 模板\\使用示例文档},
         title*         = {An Introduction to LaTeX Thesis Template\\of Wuhan University},
         student-number = {xxxxxxxxxxxxx},
-        school         = {院系名称},
-        author         = {作者姓名},
+        school         = {测绘学院},
+        author         = {陈烁龙},
         author*        = {Your Name},
         subject        = {学科},
-        major          = {专业名称},
-        advisor        = {教师姓名 , 职称},
+        major          = {测绘工程},
+        advisor        = {李星星 , 教授},
         direction      = {研究方向},
         % date           = {2021/5},
-        keywords       = {关键词 1 , 关键词 2 , 关键词 3 , 关键词 4 , 一个非常非常，非常非常长——的关键词 5},
-        keywords*      = {key word 1 , key word 2 , key word 3 , key word 4 , {and a very very, very very long key word---the key word 5}},
+        keywords       = {连续时间，多传感器系统，时空标定，因子图优化，可观性分析},
+        keywords*      = {continuous-time, multi-sensor system, temporal-spatial calibration, factor graph optimization, observability analysis},
       },
     style              =
       {
@@ -39,10 +39,22 @@
       }
   }
 
+\usepackage{multirow}
+\usepackage{amsmath, listings, fontspec, geometry, graphicx, color, amsfonts, amssymb}
+
+\newcommand\normf{}
+\newcommand\liehat[1]{\left[ #1 \right]_\times}
+\newcommand\lievee[1]{\left[ #1 \right]^\vee}
+\newcommand\liehatvee[1]{\left[ #1 \right]^\vee_\times}
+
+\newcommand\mlcomment[1]{\iffalse #1 \fi}
+% \newcommand\mlcomment[1]{ #1 }
+
 \begin{document}
 %%----------- 主体部分 ----------- %%
 \include{pages/chapter1}
 \include{pages/chapter2}
 \include{pages/chapter3}
 \include{pages/chapter4}
+\include{pages/chapter5}
 \end{document}
