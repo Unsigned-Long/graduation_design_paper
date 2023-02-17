@@ -72,6 +72,8 @@
 假设空间中存在两个坐标系$F_i$、$F_j$,以及点$\boldsymbol{p}$和向量$\boldsymbol{v}$，则将点或向量从$F_i$系变换到$F_j$系的过程，可以等价表达为如表\ref{tab:rbt}所示的不同形式。
 \begin{table*}[htbp]
   \centering
+  \caption{\normf{点和向量坐标系变换的不同表达形式}}
+  \label{tab:rbt}
   \begin{tabular}{c|c|c|c|c}
     \hline
     \normf{对象}             & \normf{${^{j}_{i}}\boldsymbol{T}$}                          & \normf{${^{j}_{i}}\boldsymbol{R}$和${^{j}\boldsymbol{p}_{i}}$} & \normf{${^{j}_{i}}\boldsymbol{q}$和${^{j}\boldsymbol{p}_{i}}$} & \normf{${^{j}_{i}}\boldsymbol{\phi}$和${^{j}\boldsymbol{p}_{i}}$} \\ \hline
@@ -103,8 +105,6 @@
                              &                                                             &                                                                &                                                                &                                                                   \\
     \hline
   \end{tabular}
-  \caption{\normf{点和向量坐标系变换的不同表达形式}}
-  \label{tab:rbt}
 \end{table*}
 \newline
 其中：$\circ$表示相应的群运算、代数运算或矩阵运算，具体可参考文献\cite{sola2018micro}；${^{i\mid j}}(\boldsymbol{p}\mid\boldsymbol{v})$表示点或向量在参考坐标系$F_{i\mid j}$系下的坐标表达。注意到，对于向量而言，变换坐标系只需考虑旋转量即可。在下文涉及坐标变换时，认为以上几种表达方式是等价的，且省略符号$\circ$的书写，不再具体说明。
@@ -129,26 +129,36 @@
 \end{equation}
 其中：$d$是$L$系坐标原点到点$\boldsymbol{p}$的直线距离，$\alpha$、$\beta$分别是激光光束在扫描点$\boldsymbol{p}$时的旋转角和高度角，如图\ref{fig:lidar_model}所示；${^{L}\boldsymbol{p}}$为点$\boldsymbol{p}$在当前$L$系下的坐标表达。机械式激光雷达发射器旋转一周，采集到的点的集合就构成一帧点云。如果机械式激光雷达采集数据时伴随有运动，则点云帧会存在运动畸变\footnote{\normf{因为在同一帧点云里，激光雷达采集每个点时L系不同，当通过归算，将一帧中的所有点表达到同一个L系下。}}，如图\ref{fig:lidar_motion_distort}所示，因此需要进行去畸变处理。常用的去畸变方法有匀速模型、匀加速模型，或使用其他传感器辅助，如IMU。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mlcomment{
+% \mlcomment{
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{量测模型}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/lidar_model.png}
-      \label{fig:lidar_model}
-    }
-    \subfigure[\normf{运动畸变}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/lidar_motion_distort.png}
+    % \subfigure[\normf{量测模型}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/lidar_model.png}
+    %   \label{fig:lidar_model}
+    % }
+    % \subfigure[\normf{运动畸变}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/lidar_motion_distort.png}
+    %   \label{fig:lidar_motion_distort}
+    % }
+    \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\linewidth]{img/lidar_model.png}
+    \caption{量测模型}
+    \label{fig:lidar_model}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/lidar_motion_distort.png}
+      \caption{运动畸变}
       \label{fig:lidar_motion_distort}
-    }
+      \end{subfigure}
 
     \caption{\normf{机械式激光雷达量测模型和运动畸变}}
 
     \label{fig:lidar}
   \end{figure}
-}
+% }
 
 机械式激光雷达存在待校准的内部参数，如每个激光发射器的高度角偏差、相对于理想L系的偏移量、测距偏差等，这些参数可以最终包含到一个相似变换(Similarity Transformation)里：
 \begin{equation}

@@ -119,6 +119,8 @@
 }
 \begin{table*}[htbp]
   \centering
+  \caption{\normf{Velodyne VLP-32基本参数}}
+  \label{tab:vlp32}
   \normf
   \begin{tabular}{c|ccccc}
     \hline
@@ -126,11 +128,11 @@
     {VLP-32}   & $32$   & $200\;m$   & $\pm5\;cm$ & $+15.0°\sim-25.0°/360°$ & $0.33°/0.1°\sim0.4°$  \\
     \hline
   \end{tabular}
-  \caption{\normf{Velodyne VLP-32基本参数}}
-  \label{tab:vlp32}
 \end{table*}
 \begin{table*}[htbp]
   \centering
+  \caption{\normf{BFS-PGE-120S4C-CS基本参数}}
+  \label{tab:camera}
   \normf
   \begin{tabular}{c|cccc}
     \hline
@@ -139,19 +141,17 @@
     Rolling                & $
     1.85\times1.85\;\mu m$ & $1024\times768${像素} & 30HZ                                 \\ 	\hline
   \end{tabular}
-  \caption{\normf{BFS-PGE-120S4C-CS基本参数}}
-  \label{tab:camera}
 \end{table*}
 \begin{table*}[htbp]
   \centering
+  \caption{\normf{ADIS-16480 IMU基本参数}}
+  \label{tab:imu}
   \normf
   \begin{tabular}{c|cccc}
     \hline
     {技术参数}   & {陀螺仪零偏} & {加速度计零偏} & {速度随机游走}       & {角度随机游走}    \\ \hline
     {ADIS-16480} & $8\;°/h$     & $1500\;mGal$   & $0.18\;m/s/\sqrt{h}$ & $0.3\;°/\sqrt{h}$ \\ 	\hline
   \end{tabular}
-  \caption{\normf{ADIS-16480 IMU基本参数}}
-  \label{tab:imu}
 \end{table*}
 
 \subsection{\normf{室内外典型场景下的算法测试和评估}}
@@ -224,6 +224,8 @@
 % \usepackage{multirow}
 \begin{table}[]
   \centering
+  \caption{\normf{实测实验外参标定误差及时延估值}}
+  \label{tab:real_world_statistic}
   \normf
   \begin{tabular}{c|c|ccccccc}
     \hline
@@ -234,8 +236,6 @@
     \multirow{2}{*}{室外} & IMU/LiDAR             & 0.034                                       & 0.043                                   & 0.015                                                 & 1.646                       & 1.862                       & 2.314                                            & 5.734  \\
                           & IMU/Camera            & 0.064                                       & 0.006                                   & 0.030                                                 & 4.774                       & 0.888                       & 4.867                                            & 6.476  \\ \hline
   \end{tabular}
-  \caption{\normf{实测实验外参标定误差及时延估值}}
-  \label{tab:real_world_statistic}
 \end{table}
 
 与仿真实验类似，我们对室内外实验标定过程中不同迭代次数下的外参和时延的估值进行了统计，并绘制了相应的绝对误差曲线，结果如图\ref{fig:indoor_evaluate}、\ref{fig:outdoor_evaluate}所示，图中横、纵坐标的含义与仿真实验一致。由于无法获得时延参数的真值，因此我们绘制了其状态变化曲线。可以看到，无论是室内环境还是室外环境，基于手眼标定法初始化的IMU/LiDAR和IMU/Camera外参的精度能够得到保证，尤其是IMU/Camera外参姿态量，其初始化后的偏差比IMU/LiDAR外参姿态量的初始化偏差小很多，这离不开SfM算法的鲁棒性。同时，相较于仿真实验，实测实验在前20次迭代计算中参数的波动更小，收敛特性更好。原因在于，在实测实验数据采集时我们充分激励载体运动，同时在解算时使用了更长时间的数据序列，二者对于标定问题的解算都是有利的。在算法收敛时，外参姿态量的偏差在$0.1^\circ$以内，位移量偏差在$5\;mm$以内，如表\ref{tab:real_world_statistic}所示。
