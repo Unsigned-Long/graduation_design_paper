@@ -1216,6 +1216,8 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
 基于上文的理论分析和实验验证可以得到，在通过自运动来标定多传感器参数时，不同的运动形式会对系统的可观性有着不同程度的影响。对于本文标定算法中外参和时参的估计而言，不同类型运动形式下的可观性结果如表\ref{tab:observability}所示。可以看到，在随机运动下，系统的外参和时参是可观的，与此相反的无运动形式下，整个系统是不可观的。
 \begin{table*}[htbp]
   \centering
+  \caption{\normf{不同运动形式下的系统外参和时延的可观性}}
+  \label{tab:observability}
   \normf
   \begin{tabular}{l|ll}
     \hline
@@ -1227,8 +1229,6 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
     {随机运动}     & {-}                                                                  & {外参、时参}           \\
     \hline
   \end{tabular}
-  \caption{\normf{不同运动形式下的系统外参和时延的可观性}}
-  \label{tab:observability}
 \end{table*}
 
 基于系统可观性的测试结果可以得到，在使用本文提出的标定方法进行多传感器标定时，需要对载体进行充分的运动激励，并且针对性的避免上述运动类型中那些导致某些参数不可观的退化运动，以满足系统的可观性，保证参数估计的准确性。
