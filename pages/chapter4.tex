@@ -12,7 +12,7 @@
       \caption{斜视图}
       \label{fig:simu1}
     \end{subfigure}
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.4\textwidth}
       \includegraphics[width=\linewidth]{img/simu/scene2.png}
       \caption{俯视图}
       \label{fig:simu2}
@@ -80,7 +80,7 @@
   \begin{figure}[htbp]
 
     \centering
-    \includegraphics[width=0.95\linewidth]{img/simu/params_iter/abs_error.png}
+    \includegraphics[width=\linewidth]{img/simu/params_iter/abs_error.png}
 
     \caption{\normf{仿真实验IMU/LiDAR/Camera外参和时延的收敛曲线}}
     \label{fig:simu_evaluate}
@@ -115,7 +115,7 @@
   \begin{figure}[h]
     \centering
 
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.511\textwidth}
       \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/equipment3.jpg}}
         \vspace{20pt}
@@ -123,7 +123,7 @@
       \caption{自主搭建的实验平台}
       \label{fig:equipment}
     \end{subfigure}
-    \begin{subfigure}{0.395\textwidth}
+    \begin{subfigure}{0.4488\textwidth}
       \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/indoor.jpg}}
         \vspace{2pt}
@@ -210,21 +210,21 @@
       \caption{室内}
       \label{fig:scene_indoor}
     \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.4\textwidth}
       \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/real_world/outdoor/map.png}}
-        \vspace{10pt}
+        \vspace{30pt}
         \centerline{\includegraphics[width=\textwidth]{img/real_world/outdoor/plane.png}}
         \vspace{20pt}
       \end{minipage}
       \caption{室外}
       \label{fig:scene_outdoor}
     \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.25\textwidth}
       \begin{minipage}{\linewidth}
-        \centerline{\includegraphics[width=0.5\textwidth]{img/real_world/sensors1.png}}
+        \centerline{\includegraphics[width=0.6\textwidth]{img/real_world/sensors1.png}}
         \vspace{10pt}
-        \centerline{\includegraphics[width=0.5\textwidth]{img/real_world/sensors2.png}}
+        \centerline{\includegraphics[width=0.4\textwidth]{img/real_world/sensors2.png}}
         \vspace{20pt}
       \end{minipage}
       \caption{标定结果可视化}
@@ -271,7 +271,7 @@
 \mlcomment{
   \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]{img/real_world/indoor/params_iter/abs_error.png}
+    \includegraphics[width=\linewidth]{img/real_world/indoor/params_iter/abs_error.png}
 
     \caption{\normf{室内实测实验IMU/LiDAR/Camera外参和时延的收敛曲线}}
 
@@ -282,7 +282,7 @@
 \mlcomment{
   \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]{img/real_world/outdoor/params_iter/abs_error.png}
+    \includegraphics[width=\linewidth]{img/real_world/outdoor/params_iter/abs_error.png}
 
     \caption{\normf{室外实测实验IMU/LiDAR/Camera外参和时延的收敛曲线}}
 
@@ -331,9 +331,9 @@
 \mlcomment{
   \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\linewidth]{img/real_world/iter_info.png}
+    \includegraphics[width=\linewidth]{img/real_world/iter_info.png}
 
-    \caption{\normf{实测实验批处理优化中的目标函数(左)、梯度(中)和置信半径(右)变化曲线}}
+    \caption{\normf{实测实验BO中的目标函数(左)、梯度(中)和置信半径(右)变化曲线}}
 
     \label{fig:real_world_iter_info}
   \end{figure}
@@ -345,11 +345,11 @@
   \begin{figure}[htbp]
     \centering
 
-    \begin{subfigure}{0.95\textwidth}
+    \begin{subfigure}{\textwidth}
       \includegraphics[width=\linewidth]{img/real_world/indoor/residuals.png}
       \caption{室内实验}
     \end{subfigure}
-    \begin{subfigure}{0.95\textwidth}
+    \begin{subfigure}{\textwidth}
       \includegraphics[width=\linewidth]{img/real_world/outdoor/residuals.png}
       \caption{室外实验}
     \end{subfigure}
@@ -414,72 +414,72 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
-  \begin{figure}[htbp]
-    \centering
-    \begin{subfigure}{0.94\textwidth}
-      \includegraphics[width=0.5\linewidth]{img/real_world/indoor/pointcloud1.png}
-      \includegraphics[width=0.5\linewidth]{img/real_world/indoor/pointcloud2.png}
-      \caption{室内上色点云地图}
-      \label{fig:indoor_pointcloud}
-    \end{subfigure}
-    \begin{subfigure}{0.95\textwidth}
-      \vspace{15pt}
-      \includegraphics[width=0.245\linewidth]{img/real_world/indoor/image_view1.png}
-      \includegraphics[width=0.245\linewidth]{img/real_world/indoor/map_view1.png}
-      \includegraphics[width=0.245\linewidth]{img/real_world/indoor/image_view2.png}
-      \includegraphics[width=0.245\linewidth]{img/real_world/indoor/map_view2.png}
-      \caption{室内共视视角}
-      \label{fig:indoor_view}
-    \end{subfigure}
-    % \subfigure[\normf{室内上色点云地图}]{
-    %   \centering
-    %   \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud1.png}
-    %   \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud2.png}
-    %   \label{fig:indoor_pointcloud}
-    % }
-    % \subfigure[\normf{室内共视视角}]{
-    %   \centering
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view1.png}
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view1.png}
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view2.png}
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view2.png}
-    %   \label{fig:indoor_view}
-    % }
-    \begin{subfigure}{0.94\textwidth}
-      \vspace{15pt}
-      \includegraphics[width=0.5\linewidth]{img/real_world/outdoor/pointcloud1.png}
-      \includegraphics[width=0.5\linewidth]{img/real_world/outdoor/pointcloud2.png}
-      \caption{室外上色点云地图}
-      \label{fig:outdoor_pointcloud}
-    \end{subfigure}
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}{\textwidth}
+    \includegraphics[width=0.497\linewidth]{img/real_world/indoor/pointcloud1.png}
+    \includegraphics[width=0.497\linewidth]{img/real_world/indoor/pointcloud2.png}
+    \caption{室内上色点云地图}
+    \label{fig:indoor_pointcloud}
+  \end{subfigure}
+  \begin{subfigure}{\textwidth}
+    \vspace{15pt}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/image_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/map_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/image_view2.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/map_view2.png}
+    \caption{室内共视视角}
+    \label{fig:indoor_view}
+  \end{subfigure}
+  % \subfigure[\normf{室内上色点云地图}]{
+  %   \centering
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud1.png}
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud2.png}
+  %   \label{fig:indoor_pointcloud}
+  % }
+  % \subfigure[\normf{室内共视视角}]{
+  %   \centering
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view2.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view2.png}
+  %   \label{fig:indoor_view}
+  % }
+  \begin{subfigure}{\textwidth}
+    \vspace{15pt}
+    \includegraphics[width=0.497\linewidth]{img/real_world/outdoor/pointcloud1.png}
+    \includegraphics[width=0.497\linewidth]{img/real_world/outdoor/pointcloud2.png}
+    \caption{室外上色点云地图}
+    \label{fig:outdoor_pointcloud}
+  \end{subfigure}
 
-    \begin{subfigure}{0.95\textwidth}
-      \vspace{15pt}
-      \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/image_view1.png}
-      \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/map_view1.png}
-      \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/image_view2.png}
-      \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/map_view2.png}
-      \caption{室外共视视角}
-      \label{fig:outdoor_view}
-    \end{subfigure}
-    % \subfigure[\normf{室外上色点云地图}]{
-    %   \centering
-    %   \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud1.png}
-    %   \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud2.png}
-    %   \label{fig:outdoor_pointcloud}
-    % }
-    % \subfigure[\normf{室外共视视角}]{
-    %   \centering
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view1.png}
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view1.png}
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view2.png}
-    %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view2.png}
-    %   \label{fig:outdoor_view}
-    % }
-    \caption{\normf{实测实验场景重建}}
+  \begin{subfigure}{\textwidth}
+    \vspace{15pt}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/image_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/map_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/image_view2.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/map_view2.png}
+    \caption{室外共视视角}
+    \label{fig:outdoor_view}
+  \end{subfigure}
+  % \subfigure[\normf{室外上色点云地图}]{
+  %   \centering
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud1.png}
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud2.png}
+  %   \label{fig:outdoor_pointcloud}
+  % }
+  % \subfigure[\normf{室外共视视角}]{
+  %   \centering
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view2.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view2.png}
+  %   \label{fig:outdoor_view}
+  % }
+  \caption{\normf{实测实验场景重建}}
 
-    \label{fig:pointcloud}
-  \end{figure}
+  \label{fig:pointcloud}
+\end{figure}
 }
 
 \section{\normf{系统可观性实验}}
@@ -706,49 +706,49 @@
 \begin{equation}
   \boldsymbol{H}_i=\begin{pmatrix}
     \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}^T
-     \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}} &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
+    \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}} &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
     \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}^T
-     \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}t_{L}}}                   &
-    \boldsymbol{0}_{3\times 1}                                                               \\
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 1}                                                             &
-    \boldsymbol{0}_{3\times 1}                                                               \\
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
+    \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}t_{L}}}                   &
+    \boldsymbol{0}_{3\times 1}                                                         \\
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 1}                                                       &
+    \boldsymbol{0}_{3\times 1}                                                         \\
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
     \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}}^T
-     \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}} &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 1}                                                             &
+    \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}} &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 1}                                                       &
     \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}}^T
-     \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}t_{C}}}                     \\
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 3}                                                             &
-    \boldsymbol{0}_{3\times 1}                                                             &
-    \boldsymbol{0}_{3\times 1}                                                               \\
+    \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}t_{C}}}                     \\
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 3}                                                       &
+    \boldsymbol{0}_{3\times 1}                                                       &
+    \boldsymbol{0}_{3\times 1}                                                         \\
     \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}t_{L}}}^T
-    \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}  &
-    \boldsymbol{0}_{1\times 3}                                                             &
-    \boldsymbol{0}_{1\times 3}                                                             &
-    \boldsymbol{0}_{1\times 3}                                                             &
+    \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}} &
+    \boldsymbol{0}_{1\times 3}                                                       &
+    \boldsymbol{0}_{1\times 3}                                                       &
+    \boldsymbol{0}_{1\times 3}                                                       &
     \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}t_{L}}}^T
-    \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}t_{L}}}                    &
-    \boldsymbol{0}_{1\times 1}                                                               \\
-    \boldsymbol{0}_{1\times 3}                                                             &
-    \boldsymbol{0}_{1\times 3}                                                             &
+    \frac{\partial \boldsymbol{r}(l)}{\partial \delta {^{I}t_{L}}}                   &
+    \boldsymbol{0}_{1\times 1}                                                         \\
+    \boldsymbol{0}_{1\times 3}                                                       &
+    \boldsymbol{0}_{1\times 3}                                                       &
     \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}t_{C}}}^T
-    \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}}  &
-    \boldsymbol{0}_{1\times 3}                                                             &
-    \boldsymbol{0}_{1\times 1}                                                             &
+    \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}} &
+    \boldsymbol{0}_{1\times 3}                                                       &
+    \boldsymbol{0}_{1\times 1}                                                       &
     \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}t_{C}}}^T
-    \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}t_{C}}}                      \\
+    \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}t_{C}}}                     \\
   \end{pmatrix}
 \end{equation}
 由于$n-r\left[ \boldsymbol{H}_i\right] =6$，因此矩阵$\boldsymbol{H}_i$的零空间$N(\boldsymbol{H}_i)$由6个基向量张成：
@@ -882,7 +882,7 @@
 \begin{equation}
   \begin{aligned}
     \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}
-    \cdot{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{^{I}\boldsymbol{\omega}} =\;&
+    \cdot{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{^{I}\boldsymbol{\omega}} =\; &
     \boldsymbol{n}_i^T\cdot
     {{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}
       \left( t_1\right) }\cdot
@@ -903,7 +903,7 @@
 \begin{equation}
   \begin{aligned}
     \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial \delta {^{I}\boldsymbol{p}_L}}
-    \cdot\liehat{{^{I}\boldsymbol{p}_L}}\cdot{^{I}\boldsymbol{\omega}} =\;&
+    \cdot\liehat{{^{I}\boldsymbol{p}_L}}\cdot{^{I}\boldsymbol{\omega}} =\; &
     \boldsymbol{n}_i^T\cdot
     {{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}
       \left( t_1\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_2\right) }
@@ -916,7 +916,7 @@
     {{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot\liehat{{^{I}\boldsymbol{p}_L}}\cdot{^{I}\boldsymbol{\omega}}
     \\
     \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial \delta {^{I}\boldsymbol{p}_L}}
-    \cdot{^{I}\boldsymbol{v}}           =\;&
+    \cdot{^{I}\boldsymbol{v}}           =\;                                &
     \boldsymbol{n}_i^T\cdot{{^{I}_{L}}\boldsymbol{R}^{-1}}
     \cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_1\right) }
     \cdot{^{I_0}_{I}\boldsymbol{R}}(t_2)\cdot{^{I}\boldsymbol{v}}
@@ -1022,22 +1022,22 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
 
 在模拟轨迹时，我们在Blender软件中指定了轨迹的二维位置(即$x$、$y$坐标)，轨迹的$z$坐标和姿态量则通过函数生成，用于模拟不同种类的运动轨迹。生成的轨迹模拟函数$\mathcal{T}(t):t\to {^{w}_{b}\boldsymbol{q}(t)},{^{w}\boldsymbol{p}_{b}(t)} $表达了时刻$t$时载体系(Body Frame)相对于世界坐标系(World Frame)的位姿偏移量，对于随机运动，其具体表达为：
 \begin{equation}
-\begin{aligned}
-  {^{w}_{b}\boldsymbol{q}}(t)&\gets\begin{cases}
-    \begin{aligned}
-      d_{r}(t) & =150\times\sin(2\pi\times\frac{t}{40})               \\
-      d_{p}(t) & =180\times\sin(2\pi\times\frac{t}{50}+\frac{\pi}{2}) \\
-      d_{y}(t) & =120\times\sin(2\pi\times\frac{t}{30})
-    \end{aligned}
-  \end{cases}\\
-  {^{w}\boldsymbol{p}_{b}}(t)&\gets\begin{cases}
-    \begin{aligned}
-      x(t) & =\mathcal{T}_x(t)                              \\
-      y(t) & =\mathcal{T}_y(t)                              \\
-      z(t) & =0.5\times\sin(2\pi\times\frac{t}{15}+\pi)+1.5
-    \end{aligned}
-  \end{cases}
-\end{aligned}
+  \begin{aligned}
+    {^{w}_{b}\boldsymbol{q}}(t) & \gets\begin{cases}
+                                         \begin{aligned}
+        d_{r}(t) & =150\times\sin(2\pi\times\frac{t}{40})               \\
+        d_{p}(t) & =180\times\sin(2\pi\times\frac{t}{50}+\frac{\pi}{2}) \\
+        d_{y}(t) & =120\times\sin(2\pi\times\frac{t}{30})
+      \end{aligned}
+                                       \end{cases} \\
+    {^{w}\boldsymbol{p}_{b}}(t) & \gets\begin{cases}
+                                         \begin{aligned}
+        x(t) & =\mathcal{T}_x(t)                              \\
+        y(t) & =\mathcal{T}_y(t)                              \\
+        z(t) & =0.5\times\sin(2\pi\times\frac{t}{15}+\pi)+1.5
+      \end{aligned}
+                                       \end{cases}
+  \end{aligned}
 \end{equation}
 其中：$t$表示时间；$d_{r}$、$d_{p}$、$d_{y}$表示角度制下的Roll-Pitch-Yaw角；$\mathcal{T}_{x|y}(t)$表示通过Blender软件生成的在$x|y$方向上的位移轨迹。对于其余的退化运动形式，可以通过修改相应的轨迹函数表达式获得，此处不再给出。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1106,7 +1106,7 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
   \begin{figure}[htbp]
 
     \centering
-    \includegraphics[width=0.95\linewidth]{img/simu2/params_iter/abs_error.png}
+    \includegraphics[width=\linewidth]{img/simu2/params_iter/abs_error.png}
 
     \caption{\normf{随机运动下系统可观性实验IMU/LiDAR/Camera外参和时延的收敛曲线}}
     \label{fig:simu2_evaluate}
