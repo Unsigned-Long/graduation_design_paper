@@ -129,7 +129,7 @@
 \end{equation}
 其中：$d$是$L$系坐标原点到点$\boldsymbol{p}$的直线距离，$\alpha$、$\beta$分别是激光光束在扫描点$\boldsymbol{p}$时的旋转角和高度角，如图\ref{fig:lidar_model}所示；${^{L}\boldsymbol{p}}$为点$\boldsymbol{p}$在当前$L$系下的坐标表达。机械式激光雷达发射器旋转一周，采集到的点的集合就构成一帧点云。如果机械式激光雷达采集数据时伴随有运动，则点云帧会存在运动畸变\footnote{\normf{因为在同一帧点云里，激光雷达采集每个点时L系不同，当通过归算，将一帧中的所有点表达到同一个L系下。}}，如图\ref{fig:lidar_motion_distort}所示，因此需要进行去畸变处理。常用的去畸变方法有匀速模型、匀加速模型，或使用其他传感器辅助，如IMU。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \mlcomment{
+\mlcomment{
   \begin{figure}[htbp]
     \centering
 
@@ -144,21 +144,21 @@
     %   \label{fig:lidar_motion_distort}
     % }
     \begin{subfigure}{0.48\textwidth}
-    \includegraphics[width=\linewidth]{img/lidar_model.png}
-    \caption{量测模型}
-    \label{fig:lidar_model}
+      \includegraphics[width=\linewidth]{img/lidar_model.png}
+      \caption{量测模型}
+      \label{fig:lidar_model}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
       \includegraphics[width=\linewidth]{img/lidar_motion_distort.png}
       \caption{运动畸变}
       \label{fig:lidar_motion_distort}
-      \end{subfigure}
+    \end{subfigure}
 
     \caption{\normf{机械式激光雷达量测模型和运动畸变}}
 
     \label{fig:lidar}
   \end{figure}
-% }
+}
 
 机械式激光雷达存在待校准的内部参数，如每个激光发射器的高度角偏差、相对于理想L系的偏移量、测距偏差等，这些参数可以最终包含到一个相似变换(Similarity Transformation)里：
 \begin{equation}
@@ -249,16 +249,28 @@
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{量测模型}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/camera_model.png}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/camera_model.png}
+      \caption{量测模型}
       \label{fig:camera_model}
-    }
-    \subfigure[\normf{果冻效应}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/rs_camera_distort.png}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/rs_camera_distort.png}
+      \caption{果冻效应}
       \label{fig:rs_camera_distort}
-    }
+    \end{subfigure}
+
+    % \subcaptionbox{\normf{量测模型}}{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/camera_model.png}
+    %   \label{fig:camera_model}
+    % }
+    % \subcaptionbox{\normf{果冻效应}}{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/rs_camera_distort.png}
+    %   \label{fig:rs_camera_distort}
+    % }
+
 
     \caption{\normf{卷帘式针孔相机量测模型和果冻效应}}
 
@@ -302,16 +314,26 @@ ${^{G}_{I}\boldsymbol{R}}$为IMU的安装误差旋转矩阵(如图\ref{fig:imu_m
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{交轴耦合误差}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/imu_axis_mis.png}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/imu_axis_mis.png}
+      \caption{交轴耦合误差}
       \label{fig:imu_axis_mis}
-    }
-    \subfigure[\normf{安装误差}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/imu_mis.png}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/imu_mis.png}
+      \caption{安装误差}
       \label{fig:imu_mis}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{交轴耦合误差}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/imu_axis_mis.png}
+    %   \label{fig:imu_axis_mis}
+    % }
+    % \subfigure[\normf{安装误差}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/imu_mis.png}
+    %   \label{fig:imu_mis}
+    % }
 
     \caption{\normf{IMU交轴耦合误差和安装误差}}
 
@@ -379,24 +401,34 @@ ${^{G}_{I}\boldsymbol{R}}$为IMU的安装误差旋转矩阵(如图\ref{fig:imu_m
 以机械激光雷达的运动畸变为例，由于同一点云帧中的不同点是异步测量，当LiDAR动态采集点云数据时，会导致畸变效应，因此需要进行时间同步。此时，离散时间估计方法一般会将运动简化为匀速运动或匀加速运动，而后基于已有的离散轨迹进行内插，如图\ref{fig:disc}所示。显然，当运动激烈时，这会引入较大的偏差。而连续时间估计方法会首先基于离散轨迹获取一个时间连续轨迹，如图\ref{fig:cont}所示，而后基于点云帧内各点的时间撮进行采样，并基于此消除运动畸变。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
-  \begin{figure}[htbp]
-    \centering
+\begin{figure}[htbp]
+  \centering
 
-    \subfigure[\normf{离散时间估计}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/disc.png}
-      \label{fig:disc}
-    }
-    \subfigure[\normf{连续时间估计}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/cont.png}
-      \label{fig:cont}
-    }
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\linewidth]{img/disc.png}
+    \caption{离散时间估计}
+    \label{fig:disc}
+  \end{subfigure}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\linewidth]{img/cont.png}
+    \caption{连续时间估计}
+    \label{fig:cont}
+  \end{subfigure}
+  % \subfigure[\normf{离散时间估计}]{
+  %   \centering
+  %   \includegraphics[width=0.48\linewidth]{img/disc.png}
+  %   \label{fig:disc}
+  % }
+  % \subfigure[\normf{连续时间估计}]{
+  %   \centering
+  %   \includegraphics[width=0.48\linewidth]{img/cont.png}
+  %   \label{fig:cont}
+  % }
 
-    \caption{\normf{基于离散时间估计和连续时间估计消除LiDAR帧运动畸变}}
+  \caption{\normf{基于离散时间估计和连续时间估计消除LiDAR帧运动畸变}}
 
-    \label{fig:disc_cont}
-  \end{figure}
+  \label{fig:disc_cont}
+\end{figure}
 }
 
 事实上，已有研究表明：当不存在传感器异步测量时，离散时间估计和连续时间估计结果是一致的；当存在传感器异步测量时，连续时间估计要优于离散时间估计\cite{cioffi2022continuous}。由于本文标定算法涉及时参的标定，因此采用连续时间估计。

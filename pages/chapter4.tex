@@ -7,16 +7,26 @@
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{斜视图}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/simu/scene1.png}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/simu/scene1.png}
+      \caption{斜视图}
       \label{fig:simu1}
-    }
-    \subfigure[\normf{俯视图}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/simu/scene2.png}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/simu/scene2.png}
+      \caption{俯视图}
       \label{fig:simu2}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{斜视图}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/simu/scene1.png}
+    %   \label{fig:simu1}
+    % }
+    % \subfigure[\normf{俯视图}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/simu/scene2.png}
+    %   \label{fig:simu2}
+    % }
 
     \caption{\normf{仿真实验中模拟的场景和轨迹}}
 
@@ -34,16 +44,26 @@
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{带有路标的点云地图}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/simu/map.png}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/simu/map.png}
+      \caption{带有路标的点云地图}
       \label{fig:simu_map}
-    }
-    \subfigure[\normf{带有路标的平面地图}]{
-      \centering
-      \includegraphics[width=0.48\linewidth]{img/simu/plane.png}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/simu/plane.png}
+      \caption{带有路标的平面地图}
       \label{fig:simu_plane}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{带有路标的点云地图}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/simu/map.png}
+    %   \label{fig:simu_map}
+    % }
+    % \subfigure[\normf{带有路标的平面地图}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/simu/plane.png}
+    %   \label{fig:simu_plane}
+    % }
 
     \caption{\normf{仿真实验处理结果}}
 
@@ -95,24 +115,43 @@
   \begin{figure}[h]
     \centering
 
-    \subfigure[\normf{自主搭建的实验平台}]{
-      \centering
-      \begin{minipage}{0.397\linewidth}
+    \begin{subfigure}{0.45\textwidth}
+      \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/equipment3.jpg}}
         \vspace{20pt}
       \end{minipage}
+      \caption{自主搭建的实验平台}
       \label{fig:equipment}
-    }
-    \subfigure[\normf{实验场景：室内(上)和室外(下)}]{
-      \centering
-      \begin{minipage}{0.34\linewidth}
+    \end{subfigure}
+    \begin{subfigure}{0.395\textwidth}
+      \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/indoor.jpg}}
-        \vspace{10pt}
+        \vspace{2pt}
         \centerline{\includegraphics[width=\textwidth]{img/outdoor.jpg}}
         \vspace{20pt}
       \end{minipage}
+      \caption{实验场景：室内(上)和室外(下)}
       \label{fig:scene}
-    }
+    \end{subfigure}
+
+    % \subfigure[\normf{自主搭建的实验平台}]{
+    %   \centering
+    %   \begin{minipage}{0.397\linewidth}
+    %     \centerline{\includegraphics[width=\textwidth]{img/equipment3.jpg}}
+    %     \vspace{20pt}
+    %   \end{minipage}
+    %   \label{fig:equipment}
+    % }
+    % \subfigure[\normf{实验场景：室内(上)和室外(下)}]{
+    %   \centering
+    %   \begin{minipage}{0.34\linewidth}
+    %     \centerline{\includegraphics[width=\textwidth]{img/indoor.jpg}}
+    %     \vspace{10pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/outdoor.jpg}}
+    %     \vspace{20pt}
+    %   \end{minipage}
+    %   \label{fig:scene}
+    % }
     \caption{\normf{实测实验设备和场景}}
     \label{fig:simu_expr}
   \end{figure}
@@ -161,36 +200,66 @@
   \begin{figure}[h]
     \centering
 
-    \subfigure[\normf{室内}]{
-      \centering
-      \begin{minipage}{0.37\linewidth}
+    \begin{subfigure}{0.32\textwidth}
+      \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/real_world/indoor/map.png}}
         \vspace{10pt}
         \centerline{\includegraphics[width=\textwidth]{img/real_world/indoor/plane.png}}
         \vspace{20pt}
       \end{minipage}
+      \caption{室内}
       \label{fig:scene_indoor}
-    }
-    \subfigure[\normf{室外}]{
-      \centering
-      \begin{minipage}{0.37\linewidth}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/real_world/outdoor/map.png}}
         \vspace{10pt}
         \centerline{\includegraphics[width=\textwidth]{img/real_world/outdoor/plane.png}}
         \vspace{20pt}
       \end{minipage}
+      \caption{室外}
       \label{fig:scene_outdoor}
-    }
-    \subfigure[\normf{标定结果可视化}]{
-      \centering
-      \begin{minipage}{0.184\linewidth}
-        \centerline{\includegraphics[width=\textwidth]{img/real_world/sensors1.png}}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \begin{minipage}{\linewidth}
+        \centerline{\includegraphics[width=0.5\textwidth]{img/real_world/sensors1.png}}
         \vspace{10pt}
-        \centerline{\includegraphics[width=\textwidth]{img/real_world/sensors2.png}}
+        \centerline{\includegraphics[width=0.5\textwidth]{img/real_world/sensors2.png}}
         \vspace{20pt}
       \end{minipage}
+      \caption{标定结果可视化}
       \label{fig:sensors}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{室内}]{
+    %   \centering
+    %   \begin{minipage}{0.37\linewidth}
+    %     \centerline{\includegraphics[width=\textwidth]{img/real_world/indoor/map.png}}
+    %     \vspace{10pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/real_world/indoor/plane.png}}
+    %     \vspace{20pt}
+    %   \end{minipage}
+    %   \label{fig:scene_indoor}
+    % }
+    % \subfigure[\normf{室外}]{
+    %   \centering
+    %   \begin{minipage}{0.37\linewidth}
+    %     \centerline{\includegraphics[width=\textwidth]{img/real_world/outdoor/map.png}}
+    %     \vspace{10pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/real_world/outdoor/plane.png}}
+    %     \vspace{20pt}
+    %   \end{minipage}
+    %   \label{fig:scene_outdoor}
+    % }
+    % \subfigure[\normf{标定结果可视化}]{
+    %   \centering
+    %   \begin{minipage}{0.184\linewidth}
+    %     \centerline{\includegraphics[width=\textwidth]{img/real_world/sensors1.png}}
+    %     \vspace{10pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/real_world/sensors2.png}}
+    %     \vspace{20pt}
+    %   \end{minipage}
+    %   \label{fig:sensors}
+    % }
     \caption{\normf{实测实验解算结果}}
     \label{fig:real_world_result}
   \end{figure}
@@ -276,14 +345,22 @@
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{室内实验}]{
-      \centering
-      \includegraphics[width=0.95\linewidth]{img/real_world/indoor/residuals.png}
-    }
-    \subfigure[\normf{室外实验}]{
-      \centering
-      \includegraphics[width=0.95\linewidth]{img/real_world/outdoor/residuals.png}
-    }
+    \begin{subfigure}{0.95\textwidth}
+      \includegraphics[width=\linewidth]{img/real_world/indoor/residuals.png}
+      \caption{室内实验}
+    \end{subfigure}
+    \begin{subfigure}{0.95\textwidth}
+      \includegraphics[width=\linewidth]{img/real_world/outdoor/residuals.png}
+      \caption{室外实验}
+    \end{subfigure}
+    % \subfigure[\normf{室内实验}]{
+    %   \centering
+    %   \includegraphics[width=0.95\linewidth]{img/real_world/indoor/residuals.png}
+    % }
+    % \subfigure[\normf{室外实验}]{
+    %   \centering
+    %   \includegraphics[width=0.95\linewidth]{img/real_world/outdoor/residuals.png}
+    % }
 
     \caption{\normf{批处理优化过程中的点到面残差和重投影残差分布}}
 
@@ -294,81 +371,113 @@
 \subsection{\normf{算法一致性评价}}
 为了更为直观的评价算法的一致性，我们基于解算完成后的IMU位姿B样条曲线$\mathcal{B}$、LiDAR点云地图$\mathcal{M}$和相机图像序列$\mathcal{C}_{\mathcal{I}}$，将灰度信息映射到点云地图上，得到了如图\ref{fig:indoor_pointcloud}、图\ref{fig:outdoor_pointcloud}所示的重建场景$\mathcal{M}^\prime$。结果点云地图$\mathcal{M}^\prime$相较于原始输入的LiDAR点云地图$\mathcal{M}$，附带有灰度信息。因此，通过$\mathcal{M}^\prime$能够比较直观的查看地图几何结构和灰度属性之间的对应关系，从而对算法的一致性进行评价。具体来说，对于点$\boldsymbol{p}\in\mathcal{M}$，查询能够正常观察到该点的图像序列，并通过采样构造灰度向量。为了让场景亮度具有一致性，我们将该灰度向量的均值作为该点的灰度，处理流程如算法\ref{alg:color_map}所示。
 \begin{algorithm}[htbp]
-  \label{alg:color_map}
   \caption{\normf{构建带有灰度纹理的三维场景}}
-  \LinesNumbered 
+  \label{alg:color_map}
+  \LinesNumbered
   \KwIn{\normf{IMU位姿B样条曲线$\mathcal{B}$、LiDAR点云地图$\mathcal{M}$和相机图像序列$\mathcal{C}_{\mathcal{I}}$}}%输入参数
   \KwOut{\normf{带有灰度纹理的三维场景$\mathcal{M}^\prime$}}
   \ForEach{$\boldsymbol{p}\in\mathcal{M}$}{
-    \normf{初始化灰度集合：}$\mathcal{G}_{\boldsymbol{p}}=\left\lbrace \right\rbrace $\;
-    \ForEach{$i\in\left( \mathcal{C}_{\mathcal{I}}\right) ^\dagger$}{
-      \normf{将点变换到第$i$个相机坐标系下：}
-      $\boldsymbol{p}^\prime\gets\begin{pmatrix}
+  \normf{初始化灰度集合：}$\mathcal{G}_{\boldsymbol{p}}=\left\lbrace \right\rbrace $\;
+  \ForEach{$i\in\left( \mathcal{C}_{\mathcal{I}}\right) ^\dagger$}{
+  \normf{将点变换到第$i$个相机坐标系下：}
+  $\boldsymbol{p}^\prime\gets\begin{pmatrix}
       \boldsymbol{p}^\prime\\1			\end{pmatrix}={{^{I}_{C}}\boldsymbol{T}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{T}^{-1}\left( t_{C_i}+{^{I}t_C}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{T}\left( t_{L}(\boldsymbol{p})+{^{I}t_L}\right) }\cdot{{^{I}_{L}}\boldsymbol{T}}\begin{pmatrix}
-      \boldsymbol{p}\\1
-      \end{pmatrix}$\;
-      
-      \If{$\boldsymbol{p}^\prime_z>0\;\boldsymbol{\&}\;\pi(\boldsymbol{p}^\prime)\in\mathcal{C}_{\mathcal{I}_i}$}{
-        \normf{记录能被正常观测得到的点的灰度：}
-        $\mathcal{G}_{\boldsymbol{p}}\gets\mathcal{C}_{\mathcal{I}_i}\left( \pi(\boldsymbol{p}^\prime)\right) $\;
-      }
-    }
-    \If{$\mathcal{G}_{\boldsymbol{p}}\neq\boldsymbol{\varnothing}$}{
-      $c=0,\;g_s=0$\;
-      \ForEach{$g\in\mathcal{G}_{\boldsymbol{p}}$}{
-        $g_s=g_s+g,\;c=c+1$\;
-      }
-      \normf{记录点及其灰度均值：}
-      $\mathcal{M}^\prime\gets\left\lbrace \boldsymbol{p}\mid g_s/c\right\rbrace $\;
-    }
-  }	
+      \boldsymbol{p} \\1
+    \end{pmatrix}$\;
+
+  \If{$\boldsymbol{p}^\prime_z>0\;\boldsymbol{\&}\;\pi(\boldsymbol{p}^\prime)\in\mathcal{C}_{\mathcal{I}_i}$}{
+  \normf{记录能被正常观测得到的点的灰度：}
+  $\mathcal{G}_{\boldsymbol{p}}\gets\mathcal{C}_{\mathcal{I}_i}\left( \pi(\boldsymbol{p}^\prime)\right) $\;
+  }
+  }
+  \If{$\mathcal{G}_{\boldsymbol{p}}\neq\boldsymbol{\varnothing}$}{
+  $c=0,\;g_s=0$\;
+  \ForEach{$g\in\mathcal{G}_{\boldsymbol{p}}$}{
+  $g_s=g_s+g,\;c=c+1$\;
+  }
+  \normf{记录点及其灰度均值：}
+  $\mathcal{M}^\prime\gets\left\lbrace \boldsymbol{p}\mid g_s/c\right\rbrace $\;
+  }
+  }
 \end{algorithm}
 
 反过来，我们通过类似的处理，将点云投射到影像上，结果如图\ref{fig:indoor_view}、图\ref{fig:outdoor_view}所示，图中不同颜色代表不同深度。从图\ref{fig:pointcloud}中可以看到，无论是室内场景还是室外场景，重建的结果都有较高的一致性，主要体现在：
 \begin{enumerate}
   \item 重建的点云地图结构和灰度地图一致。在灰度映射的点云地图中，几何结构和灰度信息对应得较好，如室内场景中标牌上的文字能够被清晰的重建出来。
-  
+
   \item 重建的点云地图相对结构一致。如室外场景中位于过道上的门窗排列一致，过道前不同停车位之间的几何连接是一致的。
-  
+
   \item “深度”影像的物体和原始影像上同名物体之间的几何位置对应得很好。
 \end{enumerate}
 
 综上可见，本文所提出的基于连续时间的LiDAR/Camera/IMU的时空标定方法能够在保证整个标定系统一致的条件下，求得全局最优的解。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mlcomment{	
+\mlcomment{
 \begin{figure}[htbp]
   \centering
-    \subfigure[\normf{室内上色点云地图}]{
-  \centering
-    \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud1.png}
-    \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud2.png}
-  \label{fig:indoor_pointcloud}
-  }
-  \subfigure[\normf{室内共视视角}]{
-    \centering
-    \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view1.png}
-    \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view1.png}
-    \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view2.png}
-    \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view2.png}
+  \begin{subfigure}{0.94\textwidth}
+    \includegraphics[width=0.5\linewidth]{img/real_world/indoor/pointcloud1.png}
+    \includegraphics[width=0.5\linewidth]{img/real_world/indoor/pointcloud2.png}
+    \caption{室内上色点云地图}
+    \label{fig:indoor_pointcloud}
+  \end{subfigure}
+  \begin{subfigure}{0.95\textwidth}
+    \vspace{15pt}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/image_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/map_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/image_view2.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/indoor/map_view2.png}
+    \caption{室内共视视角}
     \label{fig:indoor_view}
-  }
-  \subfigure[\normf{室外上色点云地图}]{
-    \centering
-    \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud1.png}
-    \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud2.png}
+  \end{subfigure}
+  % \subfigure[\normf{室内上色点云地图}]{
+  %   \centering
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud1.png}
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/indoor/pointcloud2.png}
+  %   \label{fig:indoor_pointcloud}
+  % }
+  % \subfigure[\normf{室内共视视角}]{
+  %   \centering
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/image_view2.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/indoor/map_view2.png}
+  %   \label{fig:indoor_view}
+  % }
+  \begin{subfigure}{0.94\textwidth}
+    \vspace{15pt}
+    \includegraphics[width=0.5\linewidth]{img/real_world/outdoor/pointcloud1.png}
+    \includegraphics[width=0.5\linewidth]{img/real_world/outdoor/pointcloud2.png}
+    \caption{室外上色点云地图}
     \label{fig:outdoor_pointcloud}
-  }
-        \subfigure[\normf{室外共视视角}]{
-    \centering
-    \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view1.png}
-    \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view1.png}
-    \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view2.png}
-    \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view2.png}
+  \end{subfigure}
+
+  \begin{subfigure}{0.95\textwidth}
+    \vspace{15pt}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/image_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/map_view1.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/image_view2.png}
+    \includegraphics[width=0.245\linewidth]{img/real_world/outdoor/map_view2.png}
+    \caption{室外共视视角}
     \label{fig:outdoor_view}
-  }
+  \end{subfigure}
+  % \subfigure[\normf{室外上色点云地图}]{
+  %   \centering
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud1.png}
+  %   \includegraphics[width=0.4\linewidth]{img/real_world/outdoor/pointcloud2.png}
+  %   \label{fig:outdoor_pointcloud}
+  % }
+  % \subfigure[\normf{室外共视视角}]{
+  %   \centering
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view1.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/image_view2.png}
+  %   \includegraphics[width=0.2\linewidth]{img/real_world/outdoor/map_view2.png}
+  %   \label{fig:outdoor_view}
+  % }
   \caption{\normf{实测实验场景重建}}
-  
+
   \label{fig:pointcloud}
 \end{figure}
 }
@@ -884,16 +993,26 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{斜视图}]{
-      \centering
-      \includegraphics[height=0.40\linewidth]{img/simu2/scene1.png}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/simu2/scene1.png}
+      \caption{斜视图}
       \label{fig:simu1_1}
-    }
-    \subfigure[\normf{俯视图}]{
-      \centering
-      \includegraphics[height=0.40\linewidth]{img/simu2/scene2.png}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/simu2/scene2.png}
+      \caption{俯视图}
       \label{fig:simu2_2}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{斜视图}]{
+    %   \centering
+    %   \includegraphics[height=0.40\linewidth]{img/simu2/scene1.png}
+    %   \label{fig:simu1_1}
+    % }
+    % \subfigure[\normf{俯视图}]{
+    %   \centering
+    %   \includegraphics[height=0.40\linewidth]{img/simu2/scene2.png}
+    %   \label{fig:simu2_2}
+    % }
 
     \caption{\normf{系统可观性实验场景建模}}
 
@@ -924,31 +1043,56 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
   \begin{figure}[htbp]
     \centering
 
-    \subfigure[\normf{带有路标的点云地图}]{
-      \centering
-      \includegraphics[width=0.4\linewidth]{img/simu2/map.png}
+    \begin{subfigure}{0.49\textwidth}
+      \includegraphics[width=\linewidth]{img/simu2/map.png}
+      \caption{带有路标的点云地图}
       \label{fig:simu2_map}
-    }
-    \subfigure[\normf{带有路标的平面地图}]{
-      \centering
-      \includegraphics[width=0.43\linewidth]{img/simu2/plane.png}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+      \includegraphics[width=\linewidth]{img/simu2/plane.png}
+      \caption{带有路标的平面地图}
       \label{fig:simu2_plane}
-    }
-    \subfigure[\normf{多传感器建模实体}]{
-      \centering
-      \includegraphics[width=0.23\linewidth]{img/simu2/model.png}
+    \end{subfigure}
+    % \subfigure[\normf{带有路标的点云地图}]{
+    %   \centering
+    %   \includegraphics[width=0.4\linewidth]{img/simu2/map.png}
+    %   \label{fig:simu2_map}
+    % }
+    % \subfigure[\normf{带有路标的平面地图}]{
+    %   \centering
+    %   \includegraphics[width=0.43\linewidth]{img/simu2/plane.png}
+    %   \label{fig:simu2_plane}
+    % }
+    \begin{subfigure}{0.3\textwidth}
+      \includegraphics[width=\linewidth]{img/simu2/model.png}
+      \caption{多传感器建模实体}
       \label{fig:simu2_model}
-    }
-    \subfigure[\normf{标定结果(正视图)}]{
-      \centering
-      \includegraphics[width=0.23\linewidth]{img/simu2/calib_result1.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+      \includegraphics[width=\linewidth]{img/simu2/calib_result1.png}
+      \caption{标定结果(正视图)}
       \label{fig:simu2_calib_result1}
-    }
-    \subfigure[\normf{标定结果(俯视图)}]{
-      \centering
-      \includegraphics[width=0.23\linewidth]{img/simu2/calib_result2.png}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+      \includegraphics[width=\linewidth]{img/simu2/calib_result2.png}
+      \caption{标定结果(俯视图)}
       \label{fig:simu2_calib_result2}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{多传感器建模实体}]{
+    %   \centering
+    %   \includegraphics[width=0.23\linewidth]{img/simu2/model.png}
+    %   \label{fig:simu2_model}
+    % }
+    % \subfigure[\normf{标定结果(正视图)}]{
+    %   \centering
+    %   \includegraphics[width=0.23\linewidth]{img/simu2/calib_result1.png}
+    %   \label{fig:simu2_calib_result1}
+    % }
+    % \subfigure[\normf{标定结果(俯视图)}]{
+    %   \centering
+    %   \includegraphics[width=0.23\linewidth]{img/simu2/calib_result2.png}
+    %   \label{fig:simu2_calib_result2}
+    % }
 
     \caption{\normf{随机运动下系统可观性实验处理结果}}
 
@@ -975,25 +1119,44 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
   \begin{figure}[h]
     \centering
 
-    \subfigure[\normf{第一次迭代}]{
-      \centering
-      \begin{minipage}{0.62\linewidth}
+    \begin{subfigure}{0.71\textwidth}
+      \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/batch_opt_0.png}}
         \vspace{20pt}
       \end{minipage}
+      \caption{第一次迭代}
       \label{fig:simu2_lm_equ_0}
-    }
-    \subfigure[\normf{第二次(上)第三次(下)}]{
-      \centering
-      \begin{minipage}{0.25\linewidth}
+    \end{subfigure}
+    \begin{subfigure}{0.28\textwidth}
+      \begin{minipage}{\linewidth}
         \vspace{20pt}
         \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/batch_opt_1.png}}
         \vspace{22pt}
         \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/batch_opt_2.png}}
         \vspace{35pt}
       \end{minipage}
+      \caption{第二次(上)第三次(下)}
       \label{fig:simu2_lm_equ_2_3}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{第一次迭代}]{
+    %   \centering
+    %   \begin{minipage}{0.62\linewidth}
+    %     \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/batch_opt_0.png}}
+    %     \vspace{20pt}
+    %   \end{minipage}
+    %   \label{fig:simu2_lm_equ_0}
+    % }
+    % \subfigure[\normf{第二次(上)第三次(下)}]{
+    %   \centering
+    %   \begin{minipage}{0.25\linewidth}
+    %     \vspace{20pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/batch_opt_1.png}}
+    %     \vspace{22pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/batch_opt_2.png}}
+    %     \vspace{35pt}
+    %   \end{minipage}
+    %   \label{fig:simu2_lm_equ_2_3}
+    % }
     \caption{\normf{随机运动下每次迭代时的法方程}}
     \label{fig:simu2_lm_equ}
   \end{figure}
@@ -1004,25 +1167,44 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
   \begin{figure}[h]
     \centering
 
-    \subfigure[\normf{第一次}]{
-      \centering
-      \begin{minipage}{0.62\linewidth}
+    \begin{subfigure}{0.71\textwidth}
+      \begin{minipage}{\linewidth}
         \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/echelon_form/batch_opt_0.png}}
         \vspace{20pt}
       \end{minipage}
+      \caption{第一次迭代}
       \label{fig:simu2_lm_equ_0_echelon_form}
-    }
-    \subfigure[\normf{第二次(上)第三次(下)}]{
-      \centering
-      \begin{minipage}{0.25\linewidth}
+    \end{subfigure}
+    \begin{subfigure}{0.28\textwidth}
+      \begin{minipage}{\linewidth}
         \vspace{20pt}
         \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/echelon_form/batch_opt_1.png}}
         \vspace{22pt}
         \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/echelon_form/batch_opt_2.png}}
         \vspace{35pt}
       \end{minipage}
+      \caption{第二次(上)第三次(下)}
       \label{fig:simu2_lm_equ_2_3_echelon_form}
-    }
+    \end{subfigure}
+    % \subfigure[\normf{第一次}]{
+    %   \centering
+    %   \begin{minipage}{0.62\linewidth}
+    %     \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/echelon_form/batch_opt_0.png}}
+    %     \vspace{20pt}
+    %   \end{minipage}
+    %   \label{fig:simu2_lm_equ_0_echelon_form}
+    % }
+    % \subfigure[\normf{第二次(上)第三次(下)}]{
+    %   \centering
+    %   \begin{minipage}{0.25\linewidth}
+    %     \vspace{20pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/echelon_form/batch_opt_1.png}}
+    %     \vspace{22pt}
+    %     \centerline{\includegraphics[width=\textwidth]{img/simu2/system_oa/random/echelon_form/batch_opt_2.png}}
+    %     \vspace{35pt}
+    %   \end{minipage}
+    %   \label{fig:simu2_lm_equ_2_3_echelon_form}
+    % }
     \caption{\normf{随机运动下每次批处理优化时法方程的行简化阶梯型}}
     \label{fig:simu2_lm_equ_echelon_form}
   \end{figure}
