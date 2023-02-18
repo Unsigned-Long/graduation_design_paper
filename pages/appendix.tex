@@ -53,7 +53,7 @@ LM法是高斯-牛顿法(Gauss-Newton，GN)的一种扩展。GN法使用雅克�
 
 \section{\normf{姿态增量更新}}
 \label{appendix:lie_alg_update}
-本文在进行图优化估计参数时，使用列文伯格-马夸尔特方法(Levenberg-Marquardt，LM)，通过迭代的方式增量更新参数，求解系统的最优估计。对于位移量或时延等参数而言，由于其对加法封闭，因此可以直接基于加法进行更新：
+本文在进行图优化估计参数时，使用列文伯格-马夸尔特方法(Levenberg Marquardt，LM)，通过迭代的方式增量更新参数，求解系统的最优估计。对于位移量或时延等参数而言，由于其对加法封闭，因此可以直接基于加法进行更新：
 \begin{equation}
   \label{equ:update}
   \boldsymbol{x}_{op}\gets\boldsymbol{x}_{op}+\delta\boldsymbol{x}
@@ -64,9 +64,9 @@ LM法是高斯-牛顿法(Gauss-Newton，GN)的一种扩展。GN法使用雅克�
   F(\boldsymbol{R}_{op})\oplus\underbrace{\left( \frac{{\partial F(\boldsymbol{R}_{op})}}{\partial \boldsymbol{R}_{op}}\bigg|_{\boldsymbol{R}_{op}} \right) }_{\boldsymbol{J}_r(\boldsymbol{R}_{op})\gets\mathrm{Jacobian}}\delta\boldsymbol{\phi}
 \end{equation}
 其中：$\boldsymbol{J}_r(\boldsymbol{R}_{op})$为函数$F(\cdot)$的右雅克比矩阵，可以基于姿态函数$F$，通过右绕动模型计算得到\cite{sola2018micro}；$\oplus$表示李群与李代数向量之间的运算：
-\begin{equation*}
+\begin{equation}
   \boldsymbol{R}_{op}\oplus\delta\boldsymbol{\phi}=\boldsymbol{R}_{op}\cdot\mathrm{Exp}(\delta\boldsymbol{\phi})
-\end{equation*}
+\end{equation}
 与在流形上表示姿态不同，李代数向量是姿态的最小表达，因此在LM算法中进行迭代计算时，首先计算姿态增量向量$\delta\boldsymbol{\phi}$，而后通过右乘，在流形上对姿态进行更新：
 \begin{equation}
   \boldsymbol{R}_{op}\gets\boldsymbol{R}_{op}\oplus\delta\boldsymbol{\phi}
@@ -172,14 +172,14 @@ LM法是高斯-牛顿法(Gauss-Newton，GN)的一种扩展。GN法使用雅克�
     \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial  {^{L_0}_{L_j^k}\boldsymbol{\theta}}}\cdot
     \frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}+
     \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}\cdot
-    \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}=
+    \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}} \\&=
     -\boldsymbol{n}_i^T\cdot{^{L_0}_{L_j^k}\boldsymbol{R}\cdot\liehat{\boldsymbol{p}_j^k}}
     \cdot\frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}
     +\boldsymbol{n}_i^T\cdot\frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}
   \end{aligned}
 \end{equation}
 其中：
-\begin{equation*}
+\begin{equation}
   \begin{aligned}
     \frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}= &
     -{^{I}_{L}\boldsymbol{R}^{-1}}
@@ -189,23 +189,25 @@ LM法是高斯-牛顿法(Gauss-Newton，GN)的一种扩展。GN法使用雅克�
     \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial \delta {^{I}_{L}\boldsymbol{\theta}}}=      &
     \liehat{{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }
     \cdot{^{I}\boldsymbol{p}_L}}
-    \\&+\liehat{{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }
+    +\\&\liehat{{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }
     \cdot{^{I_0}\boldsymbol{p}_I\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right)}}
-    \\&-\liehat{{{^{I}_{L}}\boldsymbol{R}^{-1}}
+    -\\&\liehat{{{^{I}_{L}}\boldsymbol{R}^{-1}}
       \cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }\cdot{^{I_0}\boldsymbol{p}_I\left( t_{L_0}+{^{I}t_L}\right)}}
-    \\&-\liehat{{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{^{I}\boldsymbol{p}_L}}
+    -\\&\liehat{{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{^{I}\boldsymbol{p}_L}}
   \end{aligned}
-\end{equation*}
+\end{equation}
 损失函数$\boldsymbol{r}_{ij}^k(l)$对$\delta{^{I}\boldsymbol{p}_L}$的偏导数为：
 \begin{equation}
   \label{equ:jacobian_pli}
-  \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial \delta {^{I}\boldsymbol{p}_L}}=
-  \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}\cdot
-  \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial \delta {^{I}\boldsymbol{p}_L}}=
-  \boldsymbol{n}_i^T\cdot
-  \left(
-  {{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }-{{^{I}_{L}}\boldsymbol{R}^{-1}}
-  \right)
+  \begin{aligned}
+    \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial \delta {^{I}\boldsymbol{p}_L}} & =
+    \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}\cdot
+    \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial \delta {^{I}\boldsymbol{p}_L}} \\&=
+    \boldsymbol{n}_i^T\cdot
+    \left(
+    {{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }-{{^{I}_{L}}\boldsymbol{R}^{-1}}
+    \right)
+  \end{aligned}
 \end{equation}
 损失函数$\boldsymbol{r}_{ij}^k(l)$对$\delta{^{I}_{C}\boldsymbol{\theta}}$、${\delta^{I}\boldsymbol{p}_C}$的偏导数为：
 \begin{equation}
@@ -231,51 +233,50 @@ LM法是高斯-牛顿法(Gauss-Newton，GN)的一种扩展。GN法使用雅克�
   \end{aligned}
 \end{equation}
 其中：
-\begin{equation*}
+\begin{equation}
   \begin{aligned}
     \frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial \delta{^{I}t_{L}}}= &
-    \frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L_0}+{^{I}t_L}\right) }}\cdot
+    \frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L_0}+{^{I}t_L}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L_0}+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
     +
-    \frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}\cdot
+    \frac{\partial {^{L_0}_{L_j^k}\boldsymbol{\theta}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
     \\
     =                                                                                & -{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L_0}+{^{I}t_L}\right) }
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L_0}+{^{I}t_L}\right) }
-    \cdot{^{I}\boldsymbol{\omega}}\left( t_{L_0}+{^{I}t_L}\right)
-    \\&+{{^{I}_{L}}\boldsymbol{R}}^{-1}
+    \cdot                                                                                                                                                                                                       \\&{^{I}\boldsymbol{\omega}}\left( t_{L_0}+{^{I}t_L}\right)
+    +{{^{I}_{L}}\boldsymbol{R}}^{-1}
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }
     \cdot{^{I}\boldsymbol{\omega}}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right)
     \\
     \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial \delta {^{I}t_{L}}}=     &
-    \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L_0}+{^{I}t_L}\right) }}\cdot
+    \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L_0}+{^{I}t_L}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L_0}+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
     +
-    \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}\cdot
+    \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
-    \\
-                                                                                     & +
+    +\\&
     \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{L_0}+{^{I}t_L}\right) }}
-    \cdot\frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{L_0}+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
+    \frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{L_0}+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
     +
     \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}
-    \cdot\frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
+    \frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }}{\partial \delta {^{I}t_{L}}}
     \\
     =                                                                                & \boldsymbol{J}_1+\boldsymbol{J}_2+\boldsymbol{J}_3+\boldsymbol{J}_4
   \end{aligned}
-\end{equation*}
-\begin{equation*}
+\end{equation}
+上式中：
+\begin{equation}
   \begin{aligned}
-    \boldsymbol{J}_1= & +{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot\liehat{{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }\cdot\left( {{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right)}
-    \cdot{^{I}\boldsymbol{p}_L}+{^{I_0}\boldsymbol{p}_I\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right)}-{^{I_0}\boldsymbol{p}_I\left( t_{L_0}+{^{I}t_L}\right)}\right) }
-    \\
-                      & \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L_0}+{^{I}t_L}\right) }
+    \boldsymbol{J}_1= & +{{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }\cdot\\&\liehat{ {{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right)}
+    \cdot{^{I}\boldsymbol{p}_L}+{^{I_0}\boldsymbol{p}_I\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right)}-{^{I_0}\boldsymbol{p}_I\left( t_{L_0}+{^{I}t_L}\right)} }
+     \cdot\\&{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L_0}+{^{I}t_L}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L_0}+{^{I}t_L}\right) }
     \cdot{^{I}\boldsymbol{\omega}}\left( t_{L_0}+{^{I}t_L}\right)
     \\
     \boldsymbol{J}_2= & -
     {{^{I}_{L}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{L_0}+{^{I}t_L}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }
-    \cdot\liehat{{^{I}\boldsymbol{p}_L}}
+    \cdot\\&\liehat{{^{I}\boldsymbol{p}_L}}
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right) }
     \cdot{^{I}\boldsymbol{\omega}}\left( t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}\right)
     \\
@@ -289,7 +290,7 @@ LM法是高斯-牛顿法(Gauss-Newton，GN)的一种扩展。GN法使用雅克�
     \cdot
     \int_{t_{I_0}}^{t_{L}(\boldsymbol{p}_j^k)+{^{I}t_L}}\left( {^{I_0}_{I}\boldsymbol{R}}(t)\cdot{^{I}\boldsymbol{a}}(t)+{^{I_0}\boldsymbol{g}}\right)dt
   \end{aligned}
-\end{equation*}
+\end{equation}
 损失函数$\boldsymbol{r}_{ij}^k(l)$对$\delta{^{I}t_{C}}$的偏导数为：
 \begin{equation}
   \frac{\partial \boldsymbol{r}_{ij}^k(l)}{\partial \delta {^{I}t_{C}}}=\boldsymbol{0}_{1\times 1}
@@ -356,7 +357,7 @@ $\pi^{-1}(\boldsymbol{p},\lambda)$为反投影函数，与投影函数相反，�
   \end{aligned}
 \end{equation}
 其中：
-\begin{equation*}
+\begin{equation}
   \begin{aligned}
     \frac{\partial ^{C_m^n}_{C_i^j}\boldsymbol{\theta}}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}}= &
     -{^{I}_{C}\boldsymbol{R}^{-1}}
@@ -367,24 +368,26 @@ $\pi^{-1}(\boldsymbol{p},\lambda)$为反投影函数，与投影函数相反，�
     \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial \delta {^{I}_{C}\boldsymbol{\theta}}}=    &
     \liehat{{{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }
     \cdot{^{I}\boldsymbol{p}_C}}
-    \\&+\liehat{{{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }
+    +\\&\liehat{{{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }
     \cdot{^{I_0}\boldsymbol{p}_I\left( t_{C}(v_i^j)+{^{I}t_C}\right)}}
-    \\&-\liehat{{{^{I}_{C}}\boldsymbol{R}^{-1}}
+    -\\&\liehat{{{^{I}_{C}}\boldsymbol{R}^{-1}}
     \cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot{^{I_0}\boldsymbol{p}_I\left( t_{C}(v_m^n)+{^{I}t_C}\right)}}
-    \\&-\liehat{{{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{^{I}\boldsymbol{p}_C}}
+    -\\&\liehat{{{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{^{I}\boldsymbol{p}_C}}
   \end{aligned}
-\end{equation*}
+\end{equation}
 损失函数$\boldsymbol{r}_{ij}^{mn}(c)$对$\delta{^{I}\boldsymbol{p}_C}$的偏导数为：
 \begin{equation}
   \label{equ:jacobian_pci}
-  \frac{\partial \boldsymbol{r}_{ij}^{mn}(c)}{\partial \delta {^{I}\boldsymbol{p}_C}}=
-  \frac{\partial \boldsymbol{r}_{ij}^{mn}(c)}{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}\cdot
-  \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial \delta {^{I}\boldsymbol{p}_C}}=
-  \boldsymbol{J}_{\pi}\cdot
-  \left(
-  {{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }
-  -{{^{I}_{C}}\boldsymbol{R}^{-1}}
-  \right)
+  \begin{aligned}
+    \frac{\partial \boldsymbol{r}_{ij}^{mn}(c)}{\partial \delta {^{I}\boldsymbol{p}_C}} & =
+    \frac{\partial \boldsymbol{r}_{ij}^{mn}(c)}{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}\cdot
+    \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial \delta {^{I}\boldsymbol{p}_C}} \\&=
+    \boldsymbol{J}_{\pi}\cdot
+    \left(
+    {{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }
+    -{{^{I}_{C}}\boldsymbol{R}^{-1}}
+    \right)
+  \end{aligned}
 \end{equation}
 损失函数$\boldsymbol{r}_{ij}^{mn}(c)$对$\delta{^{I}t_{L}}$的偏导数为：
 \begin{equation}
@@ -409,51 +412,51 @@ $\pi^{-1}(\boldsymbol{p},\lambda)$为反投影函数，与投影函数相反，�
   \end{aligned}
 \end{equation}
 其中：
-\begin{equation*}
+\begin{equation}
   \begin{aligned}
     \frac{\partial ^{C_m^n}_{C_i^j}\boldsymbol{\theta}}{\partial \delta{^{I}t_{C}}}= &
-    \frac{\partial ^{C_m^n}_{C_i^j}\boldsymbol{\theta}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}\cdot
+    \frac{\partial ^{C_m^n}_{C_i^j}\boldsymbol{\theta}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{C}}}
     +
-    \frac{\partial ^{C_m^n}_{C_i^j}\boldsymbol{\theta}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}\cdot
+    \frac{\partial ^{C_m^n}_{C_i^j}\boldsymbol{\theta}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{C}}}
     \\
     =                                                                                & -{{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }
-    \cdot{^{I}\boldsymbol{\omega}}\left( t_{C}(v_m^n)+{^{I}t_C}\right)
-    \\&+{{^{I}_{C}}\boldsymbol{R}}^{-1}
+    \cdot\\&{^{I}\boldsymbol{\omega}}\left( t_{C}(v_m^n)+{^{I}t_C}\right)
+    +{{^{I}_{C}}\boldsymbol{R}}^{-1}
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }
     \cdot{^{I}\boldsymbol{\omega}}\left( t_{C}(v_i^j)+{^{I}t_C}\right)
     \\
     \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial \delta {^{I}t_{C}}}=   &
-    \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}\cdot
+    \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{C}}}
     +
-    \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}\cdot
+    \frac{\partial {^{C_m^n}\boldsymbol{p}_{C_i^j}}}{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}
     \frac{\partial {{^{I_0}_{I}}\boldsymbol{\theta}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{C}}}
-    \\
-    +                                                                                &
+    +\\&
     \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}
-    \cdot\frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{L}}}
+    \frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{L}}}
     +
     \frac{\partial {^{L_0}\boldsymbol{p}_{L_j^k}}}{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}
-    \cdot\frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{L}}}
+    \frac{\partial {{^{I_0}}\boldsymbol{p}_{I}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }}{\partial \delta {^{I}t_{L}}}
     \\
     =                                                                                & \boldsymbol{J}_1+\boldsymbol{J}_2+\boldsymbol{J}_3+\boldsymbol{J}_4
   \end{aligned}
-\end{equation*}
-\begin{equation*}
+\end{equation}
+上式中：
+\begin{equation}
   \begin{aligned}
-    \boldsymbol{J}_1= & {{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot\liehat{{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot\left( {{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right)}
-    \cdot{^{I}\boldsymbol{p}_L}+{^{I_0}\boldsymbol{p}_I\left( t_{C}(v_i^j)+{^{I}t_C}\right)}-{^{I_0}\boldsymbol{p}_I\left( t_{C}(v_m^n)+{^{I}t_C}\right)}\right) }
-    \\
-                      & \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }
+    \boldsymbol{J}_1= & {{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot
+    \\&\liehat{{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right)}
+    \cdot{^{I}\boldsymbol{p}_L}+{^{I_0}\boldsymbol{p}_I\left( t_{C}(v_i^j)+{^{I}t_C}\right)}-{^{I_0}\boldsymbol{p}_I\left( t_{C}(v_m^n)+{^{I}t_C}\right)}}
+    \cdot\\&{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot {{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }
     \cdot{^{I}\boldsymbol{\omega}}\left( t_{C}(v_m^n)+{^{I}t_C}\right)
     \\
     \boldsymbol{J}_2= & -
     {{^{I}_{C}}\boldsymbol{R}^{-1}}\cdot{{^{I_0}_{I}}\boldsymbol{R}^{-1}\left( t_{C}(v_m^n)+{^{I}t_C}\right) }\cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }
-    \cdot\liehat{{^{I}\boldsymbol{p}_L}}
+    \cdot\\&\liehat{{^{I}\boldsymbol{p}_L}}
     \cdot{{^{I_0}_{I}}\boldsymbol{R}\left( t_{C}(v_i^j)+{^{I}t_C}\right) }
     \cdot{^{I}\boldsymbol{\omega}}\left( t_{C}(v_i^j)+{^{I}t_C}\right)
     \\
@@ -467,4 +470,4 @@ $\pi^{-1}(\boldsymbol{p},\lambda)$为反投影函数，与投影函数相反，�
     \cdot
     \int_{t_{I_0}}^{t_{C}(v_i^j)+{^{I}t_C}}\left( {^{I_0}_{I}\boldsymbol{R}}(t)\cdot{^{I}\boldsymbol{a}}(t)+{^{I_0}\boldsymbol{g}}\right)dt
   \end{aligned}
-\end{equation*}
+\end{equation}

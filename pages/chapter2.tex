@@ -186,7 +186,7 @@
 针孔相机的成像模型所图\ref{fig:camera_model}所示。对于空间中的一物方点$\boldsymbol{p}_w$，其在像平面上的成像点为$\boldsymbol{p}_i$，则物方点$\boldsymbol{p}_w$、成像点$\boldsymbol{p}_i$和相机光心$\boldsymbol{O}$三点共线，即有：
 \begin{equation}
   \label{equ:collinear}
-  \frac{z_w}{f}=-\frac{y_w}{y_i}=-\frac{x_w}{x_i}\to
+  \frac{z_w}{f}=-\frac{y_w}{y_i}=-\frac{x_w}{x_i}\quad\to\quad
   \begin{cases}
     \begin{aligned}
       x_i & =-f\times\frac{x_w}{z_w} \\
@@ -204,13 +204,13 @@
       u & =s_x\times f\times\frac{x_w}{z_w}+c_x \\
       v & =s_y\times f\times\frac{y_w}{z_w}+c_y
     \end{aligned}
-  \end{cases}\to
+  \end{cases}\to\quad
   \begin{cases}
     \begin{aligned}
       u & =f_x\times x_n+c_x \\
       v & =f_y\times y_n+c_y
     \end{aligned}
-  \end{cases}\to
+  \end{cases}\to\quad
   \begin{pmatrix}
     u \\v\\1
   \end{pmatrix}=\begin{pmatrix}
@@ -297,7 +297,7 @@
   \end{cases}
 \end{equation}
 其中：${^{G}}\boldsymbol{\omega}_m$、${^{A}}\boldsymbol{a}_m$为陀螺仪和加速度计的原始输出；${^{I}}\boldsymbol{\omega}$、${^{I}}\boldsymbol{a}$为角速度和线加速度的理论值；$\boldsymbol{M}_{\omega\mid a}$矩阵包含了比例因子和交轴耦合误差(以加速度计为例，如图\ref{fig:imu_axis_mis}所示)：
-\begin{equation*}
+\begin{equation}
   \boldsymbol{M}_\omega=\begin{pmatrix}
     S_{\omega 1} & M_{\omega 1} & M_{\omega 2} \\
     0            & S_{\omega 2} & M_{\omega 3} \\
@@ -307,7 +307,7 @@
     0       & S_{a 2} & M_{a 3} \\
     0       & 0       & S_{a 3}
   \end{pmatrix}
-\end{equation*}
+\end{equation}
 ${^{G}_{I}\boldsymbol{R}}$为IMU的安装误差旋转矩阵(如图\ref{fig:imu_mis}所示)。本文以加速度计坐标系作为IMU坐标系，因此在处理角速度时，需要通过旋转矩阵${^{G}_{I}\boldsymbol{R}}$进行角速度向量的变换；$\boldsymbol{b}_\omega$、$\boldsymbol{b}_a$为陀螺仪和加速度计的零偏，本文建模为高斯随机游走；$\boldsymbol{n}_\omega$、$\boldsymbol{n}_a$分别为陀螺仪和加速度计的加性量测噪声，本文建模为零均值高斯白噪声。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
@@ -401,34 +401,34 @@ ${^{G}_{I}\boldsymbol{R}}$为IMU的安装误差旋转矩阵(如图\ref{fig:imu_m
 以机械激光雷达的运动畸变为例，由于同一点云帧中的不同点是异步测量，当LiDAR动态采集点云数据时，会导致畸变效应，因此需要进行时间同步。此时，离散时间估计方法一般会将运动简化为匀速运动或匀加速运动，而后基于已有的离散轨迹进行内插，如图\ref{fig:disc}所示。显然，当运动激烈时，这会引入较大的偏差。而连续时间估计方法会首先基于离散轨迹获取一个时间连续轨迹，如图\ref{fig:cont}所示，而后基于点云帧内各点的时间撮进行采样，并基于此消除运动畸变。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
-\begin{figure}[htbp]
-  \centering
+  \begin{figure}[htbp]
+    \centering
 
-  \begin{subfigure}{0.48\textwidth}
-    \includegraphics[width=\linewidth]{img/disc.png}
-    \caption{离散时间估计}
-    \label{fig:disc}
-  \end{subfigure}
-  \begin{subfigure}{0.48\textwidth}
-    \includegraphics[width=\linewidth]{img/cont.png}
-    \caption{连续时间估计}
-    \label{fig:cont}
-  \end{subfigure}
-  % \subfigure[\normf{离散时间估计}]{
-  %   \centering
-  %   \includegraphics[width=0.48\linewidth]{img/disc.png}
-  %   \label{fig:disc}
-  % }
-  % \subfigure[\normf{连续时间估计}]{
-  %   \centering
-  %   \includegraphics[width=0.48\linewidth]{img/cont.png}
-  %   \label{fig:cont}
-  % }
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/disc.png}
+      \caption{离散时间估计}
+      \label{fig:disc}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\linewidth]{img/cont.png}
+      \caption{连续时间估计}
+      \label{fig:cont}
+    \end{subfigure}
+    % \subfigure[\normf{离散时间估计}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/disc.png}
+    %   \label{fig:disc}
+    % }
+    % \subfigure[\normf{连续时间估计}]{
+    %   \centering
+    %   \includegraphics[width=0.48\linewidth]{img/cont.png}
+    %   \label{fig:cont}
+    % }
 
-  \caption{\normf{基于离散时间估计和连续时间估计消除LiDAR帧运动畸变}}
+    \caption{\normf{基于离散时间估计和连续时间估计消除LiDAR帧运动畸变}}
 
-  \label{fig:disc_cont}
-\end{figure}
+    \label{fig:disc_cont}
+  \end{figure}
 }
 
 事实上，已有研究表明：当不存在传感器异步测量时，离散时间估计和连续时间估计结果是一致的；当存在传感器异步测量时，连续时间估计要优于离散时间估计\cite{cioffi2022continuous}。由于本文标定算法涉及时参的标定，因此采用连续时间估计。
@@ -442,7 +442,7 @@ B样条曲线诞生于计算机图形学领域，目的是为了在不损失精�
   \boldsymbol{B}_{n,d}(t)=\sum_{i=0}^{n}\boldsymbol{p}_i\cdot b_{i,d}(t)
 \end{equation}
 其中$b_{i,d}(t)$可以通过Cox-de Boor递归公式\cite{de1978practical}得到：
-\begin{equation*}
+\begin{equation}
   \begin{aligned}
     b_{i,0}(t) & =\begin{cases}
                     1\quad t_i\le t\le t_{i+1} \\
@@ -450,7 +450,7 @@ B样条曲线诞生于计算机图形学领域，目的是为了在不损失精�
                   \end{cases}                                                                \\
     b_{i,d}(t) & =\frac{t-t_i}{t_{i+d}-t_i}b_{i,d-1}(t)+\frac{t_{i+d+1}-t}{t_{i+d+1}-t_{i+1}}b_{i+1,d-1}(t)
   \end{aligned}
-\end{equation*}
+\end{equation}
 当节点等距时，称B样条均匀。均匀B样条完全由阶次决定，且$t\in[t_i,t_{i+1}]$节点处的值只由$d+1$个控制点$\boldsymbol{p}_i,\boldsymbol{p}_{i+1},\cdots,\boldsymbol{p}_{i+d}$约束。阶次决定了B样条曲线的表达能力，阶次越高，表达能力越强。图\ref{fig:bspline}展示了控制点相同但阶次不同的均匀B样条曲线。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
@@ -472,7 +472,7 @@ B样条曲线诞生于计算机图形学领域，目的是为了在不损失精�
 其中：$\boldsymbol{u}^T=\begin{pmatrix}
     1 & u & \cdots & u^d
   \end{pmatrix}$，且$u=(t-t_i)/(t_{i+1}-t_i)$；$\boldsymbol{M}^{(d+1)}$是维度为$d+1$的方阵，$\boldsymbol{M}^{(d+1)}_{(j)}$表示其第$j$列。当$d$确定后，矩阵$\boldsymbol{M}^{(d+1)}$也就被唯一确定了。如在本文中，使用的是阶为4(即$d=3$)的B样条曲线表示轨迹，则：
-\begin{equation*}
+\begin{equation}
   \boldsymbol{M}^{(3+1)}=\frac{1}{6}\begin{pmatrix}
     1  & 4  & 1  & 0 \\
     -3 & 0  & 3  & 0 \\
@@ -482,21 +482,21 @@ B样条曲线诞生于计算机图形学领域，目的是为了在不损失精�
   \boldsymbol{u}=\begin{pmatrix}
     1\\{u}\\{u}^2\\{u}^3
   \end{pmatrix}
-\end{equation*}
+\end{equation}
 进一步化简式\ref{equ:matrix_bspline1}，可以得到：
 \begin{equation}
   \label{equ:matrix_bspline2}
   \boldsymbol{p}(t)=\boldsymbol{p}_i+\sum_{j=1}^{d}\boldsymbol{u}^T\tilde{\boldsymbol{M}}^{(d+1)}_{(j)}(\boldsymbol{p}_{i+j}-\boldsymbol{p}_{i+j+1})
 \end{equation}
 当$d=3$时，上式中矩阵$\tilde{\boldsymbol{M}}^{(3+1)}$为：
-\begin{equation*}
+\begin{equation}
   \tilde{\boldsymbol{M}}^{(3+1)}=\frac{1}{6}\begin{pmatrix}
     6 & 5  & 1  & 0 \\
     0 & 3  & 3  & 0 \\
     0 & -3 & 3  & 0 \\
     0 & 1  & -2 & 1
   \end{pmatrix}
-\end{equation*}
+\end{equation}
 
 在使用均匀B样条曲线表示位姿轨迹时，可以采用姿态量和平移量分开的形式(即$\mathrm{SO}(3)+\mathbb{R}^3$)，也可以采用二者耦合的形式(即SE(3))。后一种的精度更高，但其姿态量和平移量高度耦合，不利于控制平移曲线。而使用前一种解耦的方式分开表达位姿轨迹，更利于参数估计\cite{haarbach2018survey}。对于平移量，用式\ref{equ:matrix_bspline1}或式\ref{equ:matrix_bspline2}即可直接表示，但是对于姿态量而言，由于其在流行上其对数乘(本质上为加法)不封闭，需要作进一步处理\cite{高翔2017视觉}。具体而言，若用单位四元数表示姿态，则首先通过对数映射将旋转量从流行空间变换到代数空间，在数乘运算结束后通过指数映射回到流行空间，具体的推导可参考\cite{kim1995general}。这里直接给出结果：
 \begin{equation}

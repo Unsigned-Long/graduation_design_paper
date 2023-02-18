@@ -174,7 +174,7 @@ SfM算法一般包含如下的几个步骤：
   \left(\boldsymbol{M}^*\left({^{C_k}_{C_{k+1}}\boldsymbol{q}}\right)-\boldsymbol{M}\left({{^{I_k}_{I_{k+1}}}\boldsymbol{q}}\right)\right)\cdot{^{I}_{C}\boldsymbol{q}}=\boldsymbol{0}_{4\times 4}
 \end{equation}
 其中$\boldsymbol{M}^*(\cdot)$和$\boldsymbol{M}(\cdot)$的含义为：对于四元数$\boldsymbol{q}=\begin{pmatrix}	q_w&q_x&q_y&q_z	\end{pmatrix}^T=\begin{pmatrix}	q_w&\boldsymbol{q}_v^T	\end{pmatrix}^T$，有：
-\begin{equation*}
+\begin{equation}
   \boldsymbol{M}(\boldsymbol{q})=\begin{pmatrix}
     q_w              & -\boldsymbol{q}_v^T                                          \\
     \boldsymbol{q}_v & q_w\cdot\boldsymbol{I}_{3\times 3}+\liehat{\boldsymbol{q}_v}
@@ -183,7 +183,7 @@ SfM算法一般包含如下的几个步骤：
     q_w              & -\boldsymbol{q}_v^T                                          \\
     \boldsymbol{q}_v & q_w\cdot\boldsymbol{I}_{3\times 3}-\liehat{\boldsymbol{q}_v}
   \end{pmatrix}
-\end{equation*}
+\end{equation}
 记式\ref{equ:relative_rot}为：${^{k}_{k+1}\boldsymbol{A}}\cdot{^{I}_{C}\boldsymbol{q}}=\boldsymbol{0}$。基于相机姿态序列，可以构建方程$\boldsymbol{A}\boldsymbol{x}=\boldsymbol{0}$。使用SVD方法\cite{barfoot2017state}分解系数矩阵$\boldsymbol{A}$，则最小特征值对应的特征向量即为方程的解。注意，在SVD分解过程中存在参数向量模长为1的约束，能够保证求解得到的四元数是在流形空间$S^3$上的单位四元数(旋转四元数)。IMU和LiDAR外参初始化过程同IMU和Camera外参初始化过程。
 
 \label{subsubsec:init_so3_bspline}
