@@ -14,7 +14,7 @@
         Camera坐标系以相机光心作为原点，其Z轴指向正前方(即相机主光轴方向)，X轴垂直于Z轴向右，Y轴与X轴和Z轴构成右手直角坐标系，指向天顶方向的反方向。本文用字母$C$表示Camera坐标系，用花体字母$\mathcal{C}$表示Camera坐标系序列，用$C_j$表示序列中的第$j$个Camera坐标系，其中$j\in\mathcal{C}^\dagger$。
   \item IMU坐标系
 
-        IMU是由加速度计和陀螺仪两种器件构成，安装时二者的坐标系可能不一致\footnote{\normf{该偏差被称为IMU安装误差(IMU Misalignment)。在本标定算法中会考虑这个偏差，详细内容见\ref{sensro_model_imu}节。}}。在本文中，将加速度计坐标系视为IMU坐标系，即在加速度计不存在交轴耦合误差\footnote{\normf{指三个轴不严格正交，详细内容见\ref{sensro_model_imu}节。}}(Axis Misalignment)的前提下，IMU坐标系的三个正交轴和加速度计坐标系的轴向完全重合。IMU坐标系也是一个右手直角坐标系，本文用字母$I$表示该坐标系，用字母$A$、$G$表示加速度计和陀螺仪的坐标系，用花体字母$\mathcal{I}$表示IMU坐标系序列，用$I_k$表示序列中的第$k$个IMU坐标系，其中$k\in\mathcal{I}^\dagger$。
+        IMU是由加速度计和陀螺仪两种器件构成，安装时二者的坐标系可能不一致\footnote{\normf{该偏差被称为IMU安装误差(IMU Misalignment)。在本标定算法中会考虑这个偏差，详细内容见\ref{sensro_model_imu}节。}}。在本文中，将加速度计坐标系视为IMU坐标系，即在加速度计不存在交轴耦合误差(Axis Misalignment)的前提下，IMU坐标系的三个正交轴和加速度计坐标系的轴向完全重合。IMU坐标系也是一个右手直角坐标系，本文用字母$I$表示该坐标系，用字母$A$、$G$表示加速度计和陀螺仪的坐标系，用花体字母$\mathcal{I}$表示IMU坐标系序列，用$I_k$表示序列中的第$k$个IMU坐标系，其中$k\in\mathcal{I}^\dagger$。
 \end{enumerate}
 \section{\normf{坐标系刚体变换}}
 三维刚体变换(Rigid Body Transformation)描述了三维空间中两个刚体坐标系之间的相对位姿关系，其由姿态量和平移量构成，存在6个自由度，具有多种数学表达形式。下面对常用的几种表达形式进行阐述。
