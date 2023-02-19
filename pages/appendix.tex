@@ -40,7 +40,7 @@ LM法是高斯-牛顿法(Gauss-Newton，GN)的一种扩展。GN法使用雅克�
 \begin{equation}
   \boldsymbol{H}(\boldsymbol{x}_{op})\delta\boldsymbol{x}=\boldsymbol{b}(\boldsymbol{x}_{op})
 \end{equation}
-在每次迭代中求解该式，得到相应的增量$\delta\boldsymbol{x}$，而后进行更新参数即可。LM法在此基础上，引入置信域的概念：
+该式即为GN法的增量方程。在每次迭代中求解该式，得到相应的增量$\delta\boldsymbol{x}$，而后进行更新参数即可。LM法在此基础上，引入置信域的概念：
 \begin{equation}
   \left( \boldsymbol{H}(\boldsymbol{x}_{op}) +\lambda\boldsymbol{D}\right) \delta\boldsymbol{x}=\boldsymbol{b}(\boldsymbol{x}_{op})\quad \mathrm{s.t.}\quad\lambda\ge0
 \end{equation}

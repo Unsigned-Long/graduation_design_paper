@@ -486,9 +486,9 @@
 \label{appendix:observability}
 系统的可观性是指基于系统的有限输入和输出信息，能否唯一确定系统在某个时刻的状态信息的性质\cite{bubnicki2005modern}。当系统的状态能够被完全确定时，称系统可观；当系统的部分状态可以被确定时，称系统部分可观；当系统的状态都不能确定时，称系统不可观。由于本文提出的基于连续时间的LiDAR/Camera/IMU的时空标定方法是一种通过自运动估计的无靶标标定方法，在标定的过程中需要充分的运动激励来保证系统的可观性。如果在标定时载体的运动不充分，会严重损害估计参数的精度，甚至导致参数不可观，无法被估计出来。为此，有必要对系统在不同运动形式下的可观性进行分析和测试。
 
-\subsection{\normf{基于法方程的系统可观性分析}}
+\subsection{\normf{基于增量方程的系统可观性分析}}
 如前文所述，本文提出的标定系统是一个基于图优化的标定框架，因此不能像滤波优化方法\cite{huai2022observability}、\cite{mirzaei2008kalman}、\cite{yang2019degenerate}、\cite{lv2022observability}一样，通过能观性秩条件(Observability Rank Condition，ORC)对系统的可观性进行判定。
-与滤波优化方法不同，图优化方法在每次迭代中，基于高斯牛顿法或者LM法(本文使用LM法，算法细节见附录\ref{appendix:lm_alg})构建法方程，而后求解该方程并对参数进行增量更新。因此，本文从法方程的角度出发进行系统的可观性分析。在不考虑置信域的情况下，LM方法的法方程如下所示：
+与滤波优化方法不同，图优化方法在每次迭代中，基于高斯牛顿法或者LM法(本文使用LM法，算法细节见附录\ref{appendix:lm_alg})构建增量方程，而后求解该方程并对参数进行增量更新。因此，本文从增量方程的角度出发进行系统的可观性分析。在不考虑置信域的情况下，LM方法的增量方程如下所示：
 \begin{equation}
   \boldsymbol{H}_{n\times n}\cdot\delta\boldsymbol{x}_{n\times 1}=\boldsymbol{b}_{n\times 1}
   \quad
@@ -541,7 +541,7 @@
     \frac{\partial \boldsymbol{r}(c)}{\partial \delta {^{I}t_{C}}}
   \end{pmatrix}_{3\times 14}
 \end{equation}
-每次迭代更新构建的法方程为：
+每次迭代更新构建的增量方程为：
 \begin{equation}
   \underbrace{\left(
     \sum\boldsymbol{J}_{\boldsymbol{x}}^T\cdot\boldsymbol{J}_{\boldsymbol{x}}
@@ -627,7 +627,7 @@
   \item[$\blacksquare$]参数可观性判定
 \end{itemize}
 
-对于法方程$\boldsymbol{H}_{n\times n}\cdot\delta\boldsymbol{x}_{n\times 1}=\boldsymbol{b}_{n\times 1}$，记$\bar{\boldsymbol{H}}_{n\times (n+1)}=\left[\boldsymbol{H}_{n\times n}\mid \boldsymbol{b}_{n\times 1}\right]$为增广矩阵，则：
+对于增量方程$\boldsymbol{H}_{n\times n}\cdot\delta\boldsymbol{x}_{n\times 1}=\boldsymbol{b}_{n\times 1}$，记$\bar{\boldsymbol{H}}_{n\times (n+1)}=\left[\boldsymbol{H}_{n\times n}\mid \boldsymbol{b}_{n\times 1}\right]$为增广矩阵，则：
 \begin{enumerate}
   \item 当$r[\boldsymbol{H}_{n\times n}]=r[\bar{\boldsymbol{H}}_{n\times (n+1)}]=n$时，方程有唯一解，此时系统完全可观，且有$\delta\boldsymbol{x}_{n\times 1}=\boldsymbol{H}^{-1}_{n\times n}\cdot\boldsymbol{b}_{n\times 1}$；
 
@@ -661,7 +661,7 @@
   \item 匀速圆周运动：载体在三维空间中运动时，IMU的线速度和角速率输出恒定不变，即有${^{I}\dot{\boldsymbol{\omega}}}=\boldsymbol{0}_{3\times 1}$和${^{I}\dot{\boldsymbol{v}}}=\boldsymbol{0}_{3\times 1}$；
   \item 随机运动：载体在三维空间中自由运动；
 \end{enumerate}
-上述运动类型中，除了随机运动，其他的都属于退化运动(Degenerate Motion)。为了分析的方便，我们基于一组残差构建的法方程进行系统可观性分析：
+上述运动类型中，除了随机运动，其他的都属于退化运动(Degenerate Motion)。为了分析的方便，我们基于一组残差构建的增量方程进行系统可观性分析：
 \begin{equation}
   \underbrace{\left(
     \boldsymbol{J}_{\boldsymbol{x}}^T\cdot\boldsymbol{J}_{\boldsymbol{x}}
@@ -1113,8 +1113,8 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
   \end{figure}
 }
 
-为了直接通过法方程的数值表达形式来考察系统的可观性，在每次批处理迭代计算之前，我们基于Ceres的自动求导(Automatic Differentiation)功能，输出损失函数对相关参数的雅克比矩阵，而后构建出法方程中的矩阵$\boldsymbol{H}_{n\times n}$和向量$\boldsymbol{b}_{n\times 1}$。
-以随机运动为例，所实现的标定系统的解算结果如图\ref{fig:simu2_result}所示\footnote{\normf{这里将所有待标定的参数都考虑进来，即包含了外参、时延参数及其他在可观性分析中没有考虑的其他参数。}}，其中图\ref{fig:simu2_model}、\ref{fig:simu2_calib_result1}、\ref{fig:simu2_calib_result2}中红色传感器为IMU、绿色传感器为Camera、蓝色传感器为LiDAR。在三次批处理中，法方程$\boldsymbol{H}_{n\times n}\cdot\delta\boldsymbol{x}_{n\times 1}=\boldsymbol{b}_{n\times 1}$的数值表达如图\ref{fig:simu2_lm_equ}所示，其中：左侧方块为系数矩阵$\boldsymbol{H}_{n\times n}$，中间单列方块为参数向量的更新量$\delta\boldsymbol{x}_{n\times 1}$，且不同灰度表示不同的参数块(Parameter Block)，右侧单列方块为向量$\boldsymbol{b}_{n\times 1}$；红色表示正值，蓝色表示负值，颜色越深，绝对值越大\footnote{\normf{为了更好的可视化，数值已通过函数$f(x)=x\cdot\vert x\vert^{-1}\cdot\log_{2}(\vert x\vert+1)$进行了映射。}}，白色代表零值。
+为了直接通过增量方程的数值表达形式来考察系统的可观性，在每次批处理迭代计算之前，我们基于Ceres的自动求导(Automatic Differentiation)功能，输出损失函数对相关参数的雅克比矩阵，而后构建出增量方程中的矩阵$\boldsymbol{H}_{n\times n}$和向量$\boldsymbol{b}_{n\times 1}$。
+以随机运动为例，所实现的标定系统的解算结果如图\ref{fig:simu2_result}所示\footnote{\normf{这里将所有待标定的参数都考虑进来，即包含了外参、时延参数及其他在可观性分析中没有考虑的其他参数。}}，其中图\ref{fig:simu2_model}、\ref{fig:simu2_calib_result1}、\ref{fig:simu2_calib_result2}中红色传感器为IMU、绿色传感器为Camera、蓝色传感器为LiDAR。在三次批处理中，增量方程$\boldsymbol{H}_{n\times n}\cdot\delta\boldsymbol{x}_{n\times 1}=\boldsymbol{b}_{n\times 1}$的数值表达如图\ref{fig:simu2_lm_equ}所示，其中：左侧方块为系数矩阵$\boldsymbol{H}_{n\times n}$，中间单列方块为参数向量的更新量$\delta\boldsymbol{x}_{n\times 1}$，且不同灰度表示不同的参数块(Parameter Block)，右侧单列方块为向量$\boldsymbol{b}_{n\times 1}$；红色表示正值，蓝色表示负值，颜色越深，绝对值越大\footnote{\normf{为了更好的可视化，数值已通过函数$f(x)=x\cdot\vert x\vert^{-1}\cdot\log_{2}(\vert x\vert+1)$进行了映射。}}，白色代表零值。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
@@ -1159,12 +1159,12 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
     %   \end{minipage}
     %   \label{fig:simu2_lm_equ_2_3}
     % }
-    \caption{\normf{随机运动下每次迭代时的法方程}}
+    \caption{\normf{随机运动下每次迭代时的增量方程}}
     \label{fig:simu2_lm_equ}
   \end{figure}
 }
 
-为了更加直观的展示待求参数的可观性，我们通过等价行变换求解了法方程的行简化阶梯型。对于随机运动而言，其每次迭代时法方程的行简化阶梯型如图\ref{fig:simu2_lm_equ_echelon_form}所示。当参数$\delta\boldsymbol{x}(i)$可以被表示为其他参数的线性组合时，表示该参数不可观，反之则可观。注意到，使用该种方式考察参数可观性等价于使用系数矩阵的零空间$N(\boldsymbol{H})$进行参数可观性判断。
+为了更加直观的展示待求参数的可观性，我们通过等价行变换求解了增量方程的行简化阶梯型。对于随机运动而言，其每次迭代时增量方程的行简化阶梯型如图\ref{fig:simu2_lm_equ_echelon_form}所示。当参数$\delta\boldsymbol{x}(i)$可以被表示为其他参数的线性组合时，表示该参数不可观，反之则可观。注意到，使用该种方式考察参数可观性等价于使用系数矩阵的零空间$N(\boldsymbol{H})$进行参数可观性判断。
 \mlcomment{
   \begin{figure}[h]
     \centering
@@ -1207,7 +1207,7 @@ ${^{L\mid C}\boldsymbol{\omega}}$方向不可观。
     %   \end{minipage}
     %   \label{fig:simu2_lm_equ_2_3_echelon_form}
     % }
-    \caption{\normf{随机运动下每次批处理优化时法方程的行简化阶梯型}}
+    \caption{\normf{随机运动下每次批处理优化时增量方程的行简化阶梯型}}
     \label{fig:simu2_lm_equ_echelon_form}
   \end{figure}
 }
