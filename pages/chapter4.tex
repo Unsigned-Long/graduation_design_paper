@@ -269,7 +269,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
-  \begin{figure}[htbp]
+  \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{img/real_world/indoor/params_iter/abs_error.png}
 
@@ -280,7 +280,7 @@
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mlcomment{
-  \begin{figure}[htbp]
+  \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{img/real_world/outdoor/params_iter/abs_error.png}
 
@@ -342,7 +342,7 @@
 为了考察约束构建准确性和有效性，我们对每次批处理优化时的残差进行统计，并绘制了如图\ref{fig:real_world_residuals}所示的残差分布图。在批处理涉及的三种约束中，点到面约束和IMU/LiDAR相关参数有关，重投影约束和IMU/Camera相关参数有关，因此在分析过程中主要考虑了这两种约束对应的残差分布。从图中可以看到，无论是室内场景还是室外场景，点到面残差和重投影残差呈现零均值正态分布，并且随着批处理优化次数的增加，标准差更小，这说明了约束构建的正确性和批处理优化的有效性。同时可以发现，在第一次批处理优化后，构建的点到面约束明显增加，原因在于经过该次批处理优化，IMU/LiDAR外参中的位移量被估计，能够更好的去除点云帧中的运动畸变，从而找到更多的面特征，以构建更多、更强的点到面约束。
 
 \mlcomment{
-  \begin{figure}[htbp]
+  \begin{figure}[h!]
     \centering
 
     \begin{subfigure}{\textwidth}
@@ -370,7 +370,7 @@
 
 \subsection{\normf{算法一致性评价}}
 为了更为直观的评价算法的一致性，我们基于解算完成后的IMU位姿B样条曲线$\mathcal{B}$、LiDAR点云地图$\mathcal{M}$和相机图像序列$\mathcal{C}_{\mathcal{I}}$，将灰度信息映射到点云地图上，得到了如图\ref{fig:indoor_pointcloud}、图\ref{fig:outdoor_pointcloud}所示的重建场景$\mathcal{M}^\prime$。结果点云地图$\mathcal{M}^\prime$相较于原始输入的LiDAR点云地图$\mathcal{M}$，附带有灰度信息。因此，通过$\mathcal{M}^\prime$能够比较直观的查看地图几何结构和灰度属性之间的对应关系，从而对算法的一致性进行评价。具体来说，对于点$\boldsymbol{p}\in\mathcal{M}$，查询能够正常观察到该点的图像序列，并通过采样构造灰度向量。为了让场景亮度具有一致性，我们将该灰度向量的均值作为该点的灰度，处理流程如算法\ref{alg:color_map}所示。
-\begin{algorithm}[htbp]
+\begin{algorithm}[h!]
   \caption{\normf{构建带有灰度纹理的三维场景}}
   \label{alg:color_map}
   \LinesNumbered
